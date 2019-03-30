@@ -34,3 +34,13 @@
   
   Gender: 
 
+
+ Schematic Diagram Designs included below: 
+ 
+ ![IMG_8595](https://user-images.githubusercontent.com/25098781/55282542-d7f97280-5302-11e9-813d-5b569a255dbb.JPG)
+ 
+ 
+![IMG_8597](https://user-images.githubusercontent.com/25098781/55282544-db8cf980-5302-11e9-84d6-3839c9abe5f0.JPG)
+
+
+![IMG_8598](https://user-images.githubusercontent.com/25098781/55282546-df208080-5302-11e9-9a89-3c0aaa8d5cf6.JPG)
