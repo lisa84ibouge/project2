@@ -20,10 +20,17 @@
   
   
   Name: 
+  
   image link: 
+  
   Short bio: 
+  
   Location: 
+  
   Place of interest (to find friends):
+  
   Language: 
+  
   Gender: 
+  
   Age: 
