@@ -14,36 +14,23 @@
   OpenTable API and /or Hotel API
   CIA Factbook and /or Wikipedia
   
-<<<<<<< HEAD
   any other travel based APIs relevant to the initial requirements. 
-=======
-  any other traval based APIs relevant to the initial requirements. 
->>>>>>> 3c8fc3e23d19e983e1bfb776dc4ab2413a8efb9b
+
   
   User input fields will contain: 
   
   
   Name: 
-<<<<<<< HEAD
-  image link: 
-  Short bio: 
-  Location: 
-  Place of interest (to find friends):
-  Language: 
-  Gender: 
-=======
   
   image link: 
   
-  Short bio: 
+  Short bio:
   
-  Location: 
+  Location:
   
   Place of interest (to find friends):
   
   Language: 
   
   Gender: 
-  
->>>>>>> 3c8fc3e23d19e983e1bfb776dc4ab2413a8efb9b
-  Age: 
+
