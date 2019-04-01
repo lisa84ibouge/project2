@@ -18,9 +18,10 @@ function search() {
   // TODO 
   // getRelatedArtists()
 
-  getVideos(q);
+//  getVideos(q);
   wikiSearch(q);
   wikiImages(q);
+  wikiSearchContent(q);
 };
 
 // $('button.related-artist').on('click', function() {
@@ -82,14 +83,15 @@ function getOutput(item) {
 // This function pulls the main thumbnail from wikipedia
 
 function wikiImages(txt) {
-
   $.ajax({
     url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${txt}&gpslimit=20`,
+    //url: `http://en.wikivoyage.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${txt}&gpslimit=20`,
     method: "GET",
     dataType: "jsonp",
     success: function (newData) {
-
-      $("#bandPic").html(`<img src='${newData.query.pages[0].thumbnail.source}' class='responsive-img valign'>`);
+      console.log("newData");
+      console.log(newData);
+     $("#bandPic").html(`<img src='${newData.query.pages[0].thumbnail.source}' class='responsive-img valign'>`);
 
     }
   })
@@ -101,11 +103,13 @@ function wikiSearch(txt) {
 
   $.ajax({
     type: "GET",
-    url: "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
+    //url: "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
+    url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
     contentType: "application/json; charset=utf-8",
     async: false,
     dataType: "json",
     success: function (data, textStatus, jqXHR) {
+      console.log(data);
       var firstText = data[2][0];
       console.log(firstText);
       $("#bandInfo").html(firstText);
@@ -116,3 +120,28 @@ function wikiSearch(txt) {
     }
   });
 }
+
+function wikiSearchContent(txt) {
+
+  $.ajax({
+    type: "GET",
+    //url: "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
+    url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json&",
+
+    //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=query&list=search&srsearch=" + txt + "&format=jsonfm",
+    contentType: "application/json; charset=utf-8",
+    async: false,
+    dataType: "json",
+    success: function (data, textStatus, jqXHR) {
+      console.log(data);
+      var firstText = data[2][0];
+      console.log(firstText);
+      $("#results").html(firstText);
+
+    },
+    error: function (errorMessage) {
+      alert(errorMessage);
+    }
+  });
+}
+
