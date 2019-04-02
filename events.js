@@ -77,8 +77,4 @@ $("#search-btn").on("click", function (event) {
         });
 
 });
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
+
