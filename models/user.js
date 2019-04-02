@@ -20,7 +20,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
+        len: {
+          argv:[1,2]
+        }
       }
     },
     age: {
@@ -28,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     photo: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     }
   });
   // StockUsers.associate = function(models) {

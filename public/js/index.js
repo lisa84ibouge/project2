@@ -6,7 +6,7 @@ $('#submit').on('click',function(){
        event.preventDefault(); 
        var userInputs = {
            name :$('#user-name').val().trim(),
-           url :$('#user-url').val().trim(),
+           photo :$('#user-url').val().trim(),
            age: $('#user-age').val().trim(),
            city: $('#user-city').val().trim(),
            state: $('#user-state').val().trim()
@@ -15,11 +15,26 @@ $('#submit').on('click',function(){
        console.log('user input', userInputs);
 
        $.post('/api/user', userInputs, function(data) {
-        //    var userInputName = $('<p>' + userInputs.name + '</p>');
-        //    var userInputUrl = $('#user-url').attr('src', userInputs.url);
-        //    var userInputAge = $('<p>' + userInputs.age + '</p>');
-        //    var userInputCity = $('<p>' + userInputs.city + '</p>');
-        //    var userInputState = $('<p>' + userInputs.state + '</P>');
+            // var userCard = $('#user-url').attr('src',userInputs.url);
+            // var userCardBody = $('#user-name').append(text(userInputs.name),
+            //     $('#user-city').text(userInputs.city))
+        $('.card').show();
+
+           var userInputName = $('<p>' + userInputs.name + '</p>') ;
+           var userInputpic = $('#card-pic').attr('src', userInputs.photo);
+           var userInputAge = $('<p>' + userInputs.age + '</p>');
+           var userInputCity = $('<p>' + userInputs.city + '</p>');
+           var userInputState = $('<p>' + userInputs.state + '</p>');
+
+           $('#card-name').html(userInputName);
+           $('#card-pic').append(userInputpic);
+        //    $('#card-pic').attr('src', userInputpic);
+           $('#card-age').html(userInputAge);
+           $('#card-city').html(userInputCity);
+           $('#card-state').html(userInputState);
+          
+
+           console.log(data,'data')
            
        });
 

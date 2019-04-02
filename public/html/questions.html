@@ -17,21 +17,18 @@
    
     </head>
     <body>
-      
-<div class="card" style="width: 18rem">
-    <img class="card-img-top" src="#" alt="Card image cap">
-    <div class="card-body">
-      <p class="card-text" id='user-name'>Name:</p>
-      <p class="card-text" id='user-url'>Profile Picture</p>
-    </div>
-</div>
 
   <form>
-    <!-- <div class="form-group">
-      <label for="user-interests">Interests</label>
-      <input type="interests" class="form-control" id="user-interests" aria-describedby="emailHelp">
-    
-    </div> -->
+    <div class="form-group">
+      <label for="user-interests">Name</label>
+      <input type="text" class="form-control" id="user-name" aria-describedby="">
+    </div> 
+
+    <div class="form-group">
+      <label for="user-url">Photo</label>
+      <input type="pic" class="form-control" id="user-url">
+    </div>
+
     <div class="form-group">
       <label for="user-age">Age</label>
       <input type="age" class="form-control" id="user-age">
@@ -51,29 +48,16 @@
 
 </form>
 
-
-  <!-- MODAL -->
-  <!-- <div id='match-modal' class="modal fade " tabindex="-1" role4="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">New BFF!</h5>
-            </div>
-            <div class="modal-body ">
-                <img id='userPic' src='' style='width:55px; height: 55px;' />
-                <p id='userName' style='display:inline;'></p>
-                <hr />
-                <p id='match'></p>
-                <img id='matchPic' src='' style='max-height: 400px;'>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- END OF MODAL -->
+<div class="card" style="width: 18rem; display: none">
+  <img id="card-pic" crossorigin="" src="" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text" id='card-name'>Name:</p>
+    <p class="card-text" id='card-state'>State:</p>
+    <p class="card-text" id='card-city'>City</p>
+    <p class="card-text" id='card-age'>Age</p>
+    <a href="" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> 
         <script type='text/javascript' src="js/index.js"></script>
     </body>
 </html>
