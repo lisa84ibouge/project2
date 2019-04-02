@@ -22,7 +22,7 @@ $('#submit').on('click',function(){
 
            var userInputName = $('<p>' + userInputs.name + '</p>') ;
            var userInputpic = $('#card-pic').attr('src', userInputs.photo);
-           var userInputAge = $('<p>' + userInputs.age + '</p>');
+           var userInputAge = $('<p>' + parseInt(userInputs.age) + '</p>');
            var userInputCity = $('<p>' + userInputs.city + '</p>');
            var userInputState = $('<p>' + userInputs.state + '</p>');
 
@@ -32,11 +32,9 @@ $('#submit').on('click',function(){
            $('#card-age').html(userInputAge);
            $('#card-city').html(userInputCity);
            $('#card-state').html(userInputState);
-          
-
            console.log(data,'data')
-           
        });
+
 
 
 

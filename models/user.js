@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     age: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER(2)
     },
     photo: {
       type: DataTypes.STRING,
