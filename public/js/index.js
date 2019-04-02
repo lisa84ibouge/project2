@@ -14,14 +14,14 @@ $('#submit').on('click',function(){
        }; 
        console.log('user input', userInputs);
 
-       $.post('/api/users', userInputs, function(data){
-           var userInputName = $('<p>' + userInputs.name + '</p>');
-           var userInputUrl = $('#user-url').attr('src', userInputs.url);
-           var userInputAge = $('<p>' + userInputs.age + '</p>');
-           var userInputCity = $('<p>' + userInputs.city + '</p>');
-           var userInputState = $('<p>' + userInputs.state + '</P>');
-           console.log('data',data )
-       })
+       $.post('/api/user', userInputs, function(data) {
+        //    var userInputName = $('<p>' + userInputs.name + '</p>');
+        //    var userInputUrl = $('#user-url').attr('src', userInputs.url);
+        //    var userInputAge = $('<p>' + userInputs.age + '</p>');
+        //    var userInputCity = $('<p>' + userInputs.city + '</p>');
+        //    var userInputState = $('<p>' + userInputs.state + '</P>');
+           
+       });
 
 
 
