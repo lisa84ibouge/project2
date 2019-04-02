@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- load jq first before bootstrap so the modal can load -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+        <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+   
+    </head>
+    <body>
+      
+<div class="card" style="width: 18rem">
+    <img class="card-img-top" src="#" alt="Card image cap">
+    <div class="card-body">
+      <p class="card-text" id='user-name'>Name:</p>
+      <p class="card-text" id='user-url'>Profile Picture</p>
+    </div>
+</div>
+
+  <form>
+    <div class="form-group">
+      <label for="user-interests">Interests</label>
+      <input type="interests" class="form-control" id="user-interests" aria-describedby="emailHelp">
+    
+    </div>
+    <div class="form-group">
+      <label for="user-age">Age</label>
+      <input type="age" class="form-control" id="user-age">
+    </div>
+
+    <div class="form-group">
+        <label for="user-city">City</label>
+        <input type="age" class="form-control" id="user-age">
+      </div>
+
+    <div class="form-group">
+    <label for="user-state">State</label>
+    <input type="age" class="form-control" id="user-age">
+    </div>
+
+    <button type="button" id='submit' class="btn btn-primary btn-lg btn-block">Submit</button>
+
+
+</form>
+
+
+  <!-- MODAL -->
+  <div id='match-modal' class="modal fade " tabindex="-1" role4="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">New BFF!</h5>
+            </div>
+            <div class="modal-body ">
+                <img id='userPic' src='' style='width:55px; height: 55px;' />
+                <p id='userName' style='display:inline;'></p>
+                <hr />
+                <p id='match'></p>
+                <img id='matchPic' src='' style='max-height: 400px;'>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END OF MODAL -->
+        <script src=""></script>
+    </body>
+</html>
+

@@ -1,26 +1,53 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  app.get("/api/user", function(req, res) {
+    db.User.findAll({}).then(function(dbUser) {
+      res.json(dbUser);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  app.post("/api/user", function(req, res) {
+    db.User.create({
+      name: req.body.name,
+      city: req.body.city,
+      state: req.body.state,
+      photo: req.body.photo
+    }).then(function(dbUser) {
+      res.json(dbUser);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.json(dbExample);
+  app.delete("/api/users:id", function(req, res) {
+    db.User.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbUser) {
+      res.json(dbUser);
     });
+  });
+
+  app.put("/api/users", function(req, res) {
+    db.User
+      .update(
+        {
+          name: req.body.name,
+          city: req.body.city,
+          state: req.body.state,
+          photo: req.body.photo
+        },
+        {
+          where: {
+            id: req.body.id
+          }
+        }
+      )
+      .then(function(dbUser) {
+        res.json(dbUser);
+      })
+      .catch(function(err, res) {
+        res.json(err);
+      });
   });
 };

@@ -1,10 +1,4 @@
-// module.exports = function(sequelize, DataTypes) {
-//   var Example = sequelize.define("Example", {
-//     text: DataTypes.STRING,
-//     description: DataTypes.TEXT
-//   });
-//   return Example;
-// };
+
 
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
@@ -29,11 +23,18 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    age: {
+      type: DataTypes.INTEGER
+    },
     photo: {
       type: DataTypes.STRING,
       allowNull: false
     }
   });
+  // StockUsers.associate = function(models) {
+  //   StockUsers.hasMany(models.StockUsersData, {
+  //     onDelete: "cascade"
+  //   });
+  // };
+  return User;
 };
-
-return User;
