@@ -3,27 +3,25 @@
 
    
 $('#submit').on('click',function(){
-
        event.preventDefault(); 
        var userInputs = {
            name :$('#user-name').val().trim(),
            url :$('#user-url').val().trim(),
-        //    interests: $('#user-interests').val().trim(),
            age: $('#user-age').val().trim(),
            city: $('#user-city').val().trim(),
            state: $('#user-state').val().trim()
-           console.log('user input', userInputs)
-       };
+          
+       }; 
+       console.log('user input', userInputs);
+
        $.post('/api/users', userInputs, function(data){
            var userInputName = $('<p>' + userInputs.name + '</p>');
            var userInputUrl = $('#user-url').attr('src', userInputs.url);
-        //    var userInputInterests = $('<p>'+ userInputs.interests + '</p>');
            var userInputAge = $('<p>' + userInputs.age + '</p>');
            var userInputCity = $('<p>' + userInputs.city + '</p>');
-           var userInputState = $
+           var userInputState = $('<p>' + userInputs.state + '</P>');
+           console.log('data',data )
        })
-
-
 
 
 
