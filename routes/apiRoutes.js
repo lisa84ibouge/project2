@@ -4,10 +4,10 @@ var User = require('../models/user')
 module.exports = function(app) {
   // read
   app.get("/api/users", function(req, res) {
-    console.log(req.body)
+    console.log(req.body, 'req body?')
     db.User.findAll({
       where: {
-        city: req.params.city
+        city: req.body.city
       }
     }).then(function(result) {
       res.json(result)
@@ -39,28 +39,28 @@ module.exports = function(app) {
       photo: ''
     }
 
-    var userArr = req.body;
-    var userCity = userArr.city;
+    // var userArr = req.body;
+    // var userCity = userArr.city;
     db.User.create({
       name: req.body.name,
       city: req.body.city,
       state: req.body.state,
       photo: req.body.photo
     }).then(function (dbUser) {
-      for (var i = 0; i < User.length; i++) {
-        console.log(User.length, 'user')
-        var matchInfo = User[i];
-        for (var j = 0; j < matchInfo[j].city.length; j++) {
-          if (userCity == matchInfo.city) {
-            console.log('match found')
-            res.push(matchArr)
-          }
-        }
+      // for (var i = 0; i < User.length; i++) {
+      //   console.log(User.length, 'user')
+      //   var matchInfo = User[i];
+      //   for (var j = 0; j < matchInfo[j].city.length; j++) {
+      //     if (userCity == matchInfo.city) {
+      //       console.log('match found')
+      //       res.push(matchArr)
+      //     }
+        // }
+        res.json(dbUser)
+      })
+      
 
-      }
-      res.json(dbUser)
-
-    });
+    // });
 
   });
 
