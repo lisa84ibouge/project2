@@ -1,4 +1,4 @@
-const axios = require("axios");
+let axios = require("axios");
 
 
 class API {
@@ -17,7 +17,7 @@ class API {
             let flights = await axios.get(" http://aviation-edge.com/v2/public/timetable?key=" + this.API_KEY + "&iataCode=" + airport.data.cities[0].codeIataCity + "&type=departure");
             return flights.data;
         } catch (err) {
-            console.log("error occurredz");
+            console.log(err);
 
         }
     }
@@ -34,4 +34,5 @@ function CreateAPI(apikey) {
 }
 
 
-module.exports = CreateAPI;
+
+module.exports = CreateAPI; 
