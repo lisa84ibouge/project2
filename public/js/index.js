@@ -1,6 +1,3 @@
-
-
-
    
 $('#submit').on('click',function(){
        event.preventDefault(); 
@@ -15,9 +12,6 @@ $('#submit').on('click',function(){
        console.log('user input', userInputs);
 
        $.post('/api/user', userInputs, function(data) {
-            // var userCard = $('#user-url').attr('src',userInputs.url);
-            // var userCardBody = $('#user-name').append(text(userInputs.name),
-            //     $('#user-city').text(userInputs.city))
         $('.card').show();
 
            var userInputName = $('<p>' + userInputs.name + '</p>') ;
