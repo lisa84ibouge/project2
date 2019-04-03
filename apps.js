@@ -21,7 +21,8 @@ function search() {
 //  getVideos(q);
   wikiSearch(q);
   wikiImages(q);
-  wikiSearchContent(q);
+  //wikiSearchContent(q);
+  googlePlaceSearch(q);
 };
 
 // $('button.related-artist').on('click', function() {
@@ -121,14 +122,65 @@ function wikiSearch(txt) {
   });
 }
 
-function wikiSearchContent(txt) {
+function googlePlaceSearch(txt) {
+
+  var map = new google.maps.Map($('#mapContainer').get(0));
+
+  var request = {
+    query: txt,
+    fields: ['name', 'geometry', 'photos', 'place_id', 'user_ratings_total'],
+  };
+
+  //var service = new google.maps.places.PlacesService($("#GoogleAttributions"));
+  var service = new google.maps.places.PlacesService(map);
+
+  service.findPlaceFromQuery(request, function(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i < results.length; i++) {
+        console.log(results[i]);
+        $("#results").html(results[i].photos);
+        // createMarker(results[i]);
+      }
+     // map.setCenter(results[0].geometry.location);
+    }
+  });
+
+
+ /* 
+  
+ $.ajax({
+    type: "GET",
+    //url: "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
+    //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json&",
+    //url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,opening_hours,website,formatted_phone_number&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
+    //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=query&list=search&srsearch=" + txt + "&format=jsonfm",
+   // url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,photo,opening_hours,website&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
+      url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters&inputtype=textquery&input=" + encodeURIComponent(txt) + "&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM", 
+   contentType: "application/json; charset=utf-8",
+    async: false,
+    dataType: "json",
+    success: function (data, textStatus, jqXHR) {
+      console.log("Google Place Search Results")
+      console.log(data);
+    
+
+    },
+    error: function (errorMessage) {
+      alert(errorMessage);
+    }
+  });*/
+}
+
+
+function placeDetails(name) {
 
   $.ajax({
     type: "GET",
     //url: "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
-    url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json&",
-
+    //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json&",
+    //url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,opening_hours,website,formatted_phone_number&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
     //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=query&list=search&srsearch=" + txt + "&format=jsonfm",
+    url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,photo,opening_hours,website&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
     contentType: "application/json; charset=utf-8",
     async: false,
     dataType: "json",
@@ -144,4 +196,3 @@ function wikiSearchContent(txt) {
     }
   });
 }
-
