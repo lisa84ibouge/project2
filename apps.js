@@ -122,13 +122,16 @@ function wikiSearch(txt) {
   });
 }
 
+
+
 function googlePlaceSearch(txt) {
 
-  var map = new google.maps.Map($('#mapContainer').get(0));
+  //var map = new google.maps.Map($('#map').get(0));
+
 
   var request = {
     query: txt,
-    fields: ['name', 'geometry', 'photos', 'place_id', 'user_ratings_total'],
+    fields: ['name', 'geometry', 'photos', 'place_id', 'user_ratings_total', 'price_level'],
   };
 
   //var service = new google.maps.places.PlacesService($("#GoogleAttributions"));
@@ -141,10 +144,40 @@ function googlePlaceSearch(txt) {
         $("#results").html(results[i].photos);
         // createMarker(results[i]);
       }
-     // map.setCenter(results[0].geometry.location);
+      map.setCenter(results[0].geometry.location);
     }
   });
 
+
+
+
+
+  
+/*
+  .done(function (response) {
+
+    console.log(response);
+    var events = response.resultsPage.results.event;
+
+    //For loop to populate table
+    for (var i = 0; i < events.length; i++) {
+        var venue = events[i].venue.displayName;
+        var location = events[i].location.city;
+        var date = events[i].start.date;
+        var newTableRow = $("<tr>");
+        var venueTab = $("<td>").text(venue);
+        var locationTab = $("<td>").text(location);
+        var dateTab = $("<td>").text(date);
+        $(newTableRow).append(venueTab, locationTab, dateTab)
+        $("#appendtome").append(newTableRow);
+    }
+});
+
+});
+
+*/
+
+  
 
  /* 
   
@@ -172,7 +205,7 @@ function googlePlaceSearch(txt) {
 }
 
 
-function placeDetails(name) {
+/* function placeDetails(name) { 
 
   $.ajax({
     type: "GET",
@@ -195,4 +228,4 @@ function placeDetails(name) {
       alert(errorMessage);
     }
   });
-}
+}*/
