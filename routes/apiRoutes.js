@@ -1,5 +1,5 @@
 var db = require("../models");
-var op = db.Sequelize.Op;
+// var op = db.Sequelize.Op;
 
 module.exports = function(app) {
   // read the info at this path
@@ -49,9 +49,6 @@ module.exports = function(app) {
       db.User.findAll({
         where: {
           city: req.body.city,
-          // id:{
-          //   [op.notIn]:[req.body.id]
-          // }
         }
       }).then(function(matchingUsers){
         console.log('here ---->', matchingUsers)
