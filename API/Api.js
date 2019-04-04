@@ -10,23 +10,26 @@ class API {
      * Pre-Condition: params must be an array.
      * 
      * @param {Array} params
-     *  
+     *  @returns An Array of objects. Returns an empty array if there are no results.
      */
     async MakeAPICall(params) {
         try {
             if (!Array.isArray(params)) throw "Invaild params";
-
+            //get iataCode for city
             let airport = await axios.get(" http://aviation-edge.com/v2/public/autocomplete?key=" + this.API_KEY + "&city=" + params[0]);
-            console.log(airport.data);
+            //get timetable for flights
             let flights = await axios.get(" http://aviation-edge.com/v2/public/timetable?key=" + this.API_KEY + "&iataCode=" + airport.data.cities[0].codeIataCity + "&type=departure");
 
             let requestedFlights = [];
+
             for (let i = 0; i < flights.data.length; i++) {
-                if (flights.data[i].arrival === params[0] && flights.data[i].status === "scheduled") {
+                let arrival = flights.data[i].arrival;
+                //filter departures for destination 
+                if (arrival.iataCode === params[1] && flights.data[i].status === "scheduled") {
                     requestedFlights.push(flights.data[i]);
                 }
             }
-            console.log(requestedFlights);
+
             return requestedFlights;
         } catch (err) {
             console.log("error");
@@ -46,9 +49,7 @@ function CreateAPI(apikey) {
     return new API(apikey);
 }
 
-var a = CreateAPI("87b37c-5803db");
-var b = a.MakeAPICall(["Paris", "SEA"]);
-console.log(b);
+
 
 
 
