@@ -4,9 +4,12 @@ $('#submit').on('click',function(){
        var userInputs = {
            name :$('#user-name').val().trim(),
            photo :$('#user-url').val().trim(),
-           age: $('#user-age').val().trim(),
+           age: parseInt($('#user-age').val().trim()),
            city: $('#user-city').val().trim(),
-           state: $('#user-state').val().trim()
+           state: $('#user-state').val().trim(),
+           country: $('#user-country').val().trim(),
+           lang: $('#user-lang').val().trim(),
+           secLang: $('#user-secLang').val().trim()
           
        }; 
        console.log('user input', userInputs);
@@ -16,9 +19,12 @@ $('#submit').on('click',function(){
 
            var userInputName = $('<p>' + userInputs.name + '</p>') ;
            var userInputpic = $('#card-pic').attr('src', userInputs.photo);
-           var userInputAge = $('<p>' + parseInt(userInputs.age) + '</p>');
+           var userInputAge = $('<p>' + userInputs.age + '</p>');
            var userInputCity = $('<p>' + userInputs.city + '</p>');
            var userInputState = $('<p>' + userInputs.state + '</p>');
+           var userInputCountry = $('<p>' + userInputs.country+ '</p>');
+           var userInputLang = $('<p>' + userInputs.lang + '</p>');
+           var userInputSecLang = $('<p>' + userInputs.secLang + '</p>');
 
            $('#card-name').html(userInputName);
            $('#card-pic').append(userInputpic);
@@ -26,6 +32,10 @@ $('#submit').on('click',function(){
            $('#card-age').html(userInputAge);
            $('#card-city').html(userInputCity);
            $('#card-state').html(userInputState);
+           $('#card-country').html(userInputCountry);
+           $('#card-lang').html(userInputLang);
+           $('#card-secLang').html(userInputSecLang);
+        //    $('#card-state').html(userInputState);
            console.log(data,'data')
        });
 

@@ -31,12 +31,21 @@ module.exports = function(sequelize, DataTypes) {
     photo: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      defaultValue: 'USA'
+      
+    },
+    lang: {
+      type: DataTypes.STRING,
+      allowNull:false,
+    },
+    secLang: {
+      type:DataTypes.STRING,
+      allowNull:true,
     }
   });
-  // StockUsers.associate = function(models) {
-  //   StockUsers.hasMany(models.StockUsersData, {
-  //     onDelete: "cascade"
-  //   });
-  // };
-  return User;
+   return User;
 };
