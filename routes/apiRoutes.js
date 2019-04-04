@@ -1,9 +1,9 @@
 var db = require("../models");
 // var op = db.Sequelize.Op;
 
-module.exports = function(app) {
+module.exports = function (app) {
   // read the info at this path
-  app.get("/api/users", function(req, res) {
+  app.get("/api/users", function (req, res) {
     console.log(req.body, 'req body?')
     // req.query is the result of the query
     console.log(req.query)
@@ -12,26 +12,16 @@ module.exports = function(app) {
         city: req.query.city,
 
       }
-    }).then(function(users) {
+    }).then(function (users) {
       // result is the result of query
       console.log(users)
       res.json(users)
-    //   var userCity = req.params.city;
-  
-    //   for (var i = 0; i <dbUser.length; i++){
-    //     if (userCity == dbUser[i].city){
-    //     return res.json(dbUser[i].city);
-    //   } else{
-    //     return res.send('no match found')
-    //   }
-  
-    //   }
-    //  console.log('city: ', dbUser)
+      
     });
 
   });
 
-  
+
 
   // create
   app.post("/api/user/", function (req, res) {
@@ -40,8 +30,8 @@ module.exports = function(app) {
       city: req.body.city,
       state: req.body.state,
       photo: req.body.photo,
-      age:req.body.age,
-      lang:req.body.lang,
+      age: req.body.age,
+      lang: req.body.lang,
       country: req.body.country,
       secLang: req.body.secLang
 
@@ -50,7 +40,7 @@ module.exports = function(app) {
         where: {
           city: req.body.city,
         }
-      }).then(function(matchingUsers){
+      }).then(function (matchingUsers) {
         console.log('here ---->', matchingUsers)
         for (let i = 0; i < matchingUsers.length; i++) {
           console.log('matching:', matchingUsers[i].name, ': ', matchingUsers[i].city);
@@ -58,15 +48,15 @@ module.exports = function(app) {
         // no need to run the for loop because the 'where' clause already filters 
         res.json(matchingUsers);
       })
-     
+
     });
 
   });
 
 
 
-// update
-  app.put("/api/users", function(req, res) {
+  // update
+  app.put("/api/users", function (req, res) {
     db.User
       .update(
         {
@@ -81,10 +71,10 @@ module.exports = function(app) {
           }
         }
       )
-      .then(function(dbUser) {
+      .then(function (dbUser) {
         res.json(dbUser);
       })
-      .catch(function(err, res) {
+      .catch(function (err, res) {
         res.json(err);
       });
   });

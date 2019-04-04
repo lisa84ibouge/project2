@@ -1,4 +1,4 @@
-let axios = require('axios');
+var axios = require('axios');
 
 
 class API {
@@ -7,16 +7,29 @@ class API {
     }
 
     /**
+     * Pre-Condition: params must be an array.
      * 
-     * @param {*} params
+     * @param {Array} params
      *  
      */
     async MakeAPICall(params) {
         try {
-            let airport = await axios.get(" http://aviation-edge.com/v2/public/autocomplete?key=" + this.API_KEY + "&city=" + params);
+            if (!Array.isArray(params)) throw "Invaild params";
+
+            let airport = await axios.get(" http://aviation-edge.com/v2/public/autocomplete?key=" + this.API_KEY + "&city=" + params[0]);
+            console.log(airport.data);
             let flights = await axios.get(" http://aviation-edge.com/v2/public/timetable?key=" + this.API_KEY + "&iataCode=" + airport.data.cities[0].codeIataCity + "&type=departure");
-            return flights.data;
+
+            let requestedFlights = [];
+            for (let i = 0; i < flights.data.length; i++) {
+                if (flights.data[i].arrival === params[0] && flights.data[i].status === "scheduled") {
+                    requestedFlights.push(flights.data[i]);
+                }
+            }
+            console.log(requestedFlights);
+            return requestedFlights;
         } catch (err) {
+            console.log("error");
             console.log(err);
 
         }
@@ -32,6 +45,10 @@ class API {
 function CreateAPI(apikey) {
     return new API(apikey);
 }
+
+var a = CreateAPI("87b37c-5803db");
+var b = a.MakeAPICall(["Paris", "SEA"]);
+console.log(b);
 
 
 
