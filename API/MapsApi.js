@@ -1,5 +1,5 @@
 var gMapClient = require('@google/maps').createClient({
-    key: "AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
+    key: "",
     Promise: Promise
 });
 
