@@ -17,9 +17,39 @@
   <!--css linked-->
   <link rel='stylesheet' href='assets/css/styles.css'> 
   <!--Google Web API library-->
-  <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM&libraries=places"></script>
+  <!--<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>-->
+  <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM&libraries=places"></script>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+<script>
+
+      var map;
+            function initMap() {
+               map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+              });
+            }
+      
+     // window.initMap = initMap;
+      
+      
+      </script>
+      
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM&callback=initMap&libraries=places"
+async defer></script>
+
 </head>
 
 <body>
@@ -80,10 +110,41 @@
       </div>
 
       <div class="col s6 m6" id='col2'>
-        <div class="card-panel z-depth-5" style="overflow-y: scroll; height:850px;">
-          <div class="card-content">
-            <div class='row' id="video-container">
+        <div class="card-panel z-depth-5" style="overflow-y: scroll; height:450px;">
+          <div class="card-content" id="map">
+            <div class='row' >
               <ul id='results'></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6 m6" id="col1">
+          <div class="card-panel z-depth-5">
+            <span class="black-text" id="eventsGoHere">
+              <!-- Event Table -->
+              <table>
+                <thead>
+                  <tr>
+                      <th>Flights to this Location</th>
+                  
+                    </tr>
+                  </thead>
+                  <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
+                </table>
+              </span>
+            </div>
+          </div>
+
+
+
+    <div class="col s6 m6" id='co1'>
+        <div class="card-panel z-depth-5" style="overflow-y: scroll; height:450px;">
+          <div class="card-content">
+            <div class='row' >
+              <ul id='googlePlaceDetails'></ul>
             </div>
           </div>
         </div>
@@ -101,7 +162,6 @@
 <div id="mapContainer">
 
 </div>
-
 
 
 </div>
