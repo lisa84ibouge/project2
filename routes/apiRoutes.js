@@ -1,24 +1,22 @@
 var db = require("../models");
-// var op = db.Sequelize.Op;
+var Op = db.Sequelize.Op;
 
 module.exports = function (app) {
   // read the info at this path
-  app.get("/api/users", function (req, res) {
-    console.log(req.body, 'req body?')
+
+  app.get("/api/users", function(req, res) {
+
     // req.query is the result of the query
-    console.log(req.query)
+    console.log(req.query);
     db.User.findAll({
       where: {
-        city: req.query.city,
-
+        city: req.query.city
       }
     }).then(function (users) {
-      // result is the result of query
-      console.log(users)
-      res.json(users)
-      
+      console.log(users);
+      res.json(users);
+    
     });
-
   });
 
 
@@ -28,7 +26,6 @@ module.exports = function (app) {
     db.User.create({
       name: req.body.name,
       city: req.body.city,
-      state: req.body.state,
       photo: req.body.photo,
       age: req.body.age,
       lang: req.body.lang,
@@ -38,14 +35,20 @@ module.exports = function (app) {
     }).then(function (dbUser) {
       db.User.findAll({
         where: {
-          city: req.body.city,
+          [Op.or]: [{ city: req.body.city }, { country: req.body.country }]
         }
-      }).then(function (matchingUsers) {
-        console.log('here ---->', matchingUsers)
+      }).then(function(matchingUsers){
+        // console.log('here ---->', matchingUsers)
+     
         for (let i = 0; i < matchingUsers.length; i++) {
-          console.log('matching:', matchingUsers[i].name, ': ', matchingUsers[i].city);
+          if(matchingUsers[i].city == db.User.city) {
+            console.log('matching:', matchingUsers[i].name, ': ', matchingUsers[i].city);
+          } else {
+            console.log('Matching country: ', matchingUsers[i].country, 'matching name: ', matchingUsers[i].name)
+          }
+          
         }
-        // no need to run the for loop because the 'where' clause already filters 
+  
         res.json(matchingUsers);
       })
 
@@ -53,29 +56,4 @@ module.exports = function (app) {
 
   });
 
-
-
-  // update
-  app.put("/api/users", function (req, res) {
-    db.User
-      .update(
-        {
-          name: req.body.name,
-          city: req.body.city,
-          state: req.body.state,
-          photo: req.body.photo
-        },
-        {
-          where: {
-            id: req.body.id
-          }
-        }
-      )
-      .then(function (dbUser) {
-        res.json(dbUser);
-      })
-      .catch(function (err, res) {
-        res.json(err);
-      });
-  });
-};
+ 

@@ -16,15 +16,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    state: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: {
-          argv:[1,2]
-        }
-      }
-    },
     age: {
       type: DataTypes.INTEGER(2)
     },
