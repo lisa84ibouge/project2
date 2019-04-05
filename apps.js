@@ -19,7 +19,7 @@ function search() {
   // getRelatedArtists()
 
 //  getVideos(q);
-  wikiSearch(q);
+  
   wikiImages(q);
   //wikiSearchContent(q);
   googlePlaceSearch(q);
@@ -87,14 +87,17 @@ function getOutput(item) {
 
 function wikiImages(txt) {
   $.ajax({
-    url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${txt}&gpslimit=20`,
+    //url: `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${txt}&gpslimit=20`,
     //url: `http://en.wikivoyage.org/w/api.php?action=query&format=json&prop=pageimages%7Cpageterms&generator=prefixsearch&redirects=1&formatversion=2&piprop=thumbnail&pithumbsize=250&pilimit=20&wbptterms=description&gpssearch=${txt}&gpslimit=20`,
+    //url: 'https://api.sygictravelapi.com/1.1/en/places/poi:530/media',
+    url: "https://api.sygictravelapi.com/1.1/en/places/list?query=" + encodeURIComponent(txt),
     method: "GET",
     dataType: "jsonp",
+    headers: { 'x-api-key': 'aOz451xNYq4V2Z8wsYDIV2lZWqBENUTK2tk1ersn'},
     success: function (newData) {
       console.log("newData");
       console.log(newData);
-     $("#bandPic").html(`<img src='${newData.query.pages[0].thumbnail.source}' class='responsive-img valign'>`);
+     $("#bandPic").html(`<img src='${data.data.places[0]}' class='responsive-img valign'>`);
 
     }
   })
@@ -102,20 +105,26 @@ function wikiImages(txt) {
 
 // This function pulls the first paragraph from wikipedia
 
-function wikiSearch(txt) {
-
+function contentSearch(poiID) {
+ 
   $.ajax({
     type: "GET",
     //url: "https://cors-anywhere.herokuapp.com/https://en.wikipedia.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
-    url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
+    //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json",
+    url: "https://api.sygictravelapi.com/1.1/en/places/" + poiID,
     contentType: "application/json; charset=utf-8",
-    async: false,
+    async: true,
     dataType: "json",
-    success: function (data, textStatus, jqXHR) {
+    headers: { 'x-api-key': 'aOz451xNYq4V2Z8wsYDIV2lZWqBENUTK2tk1ersn'},
+    success: function (data, err) {
+      console.log("This is the content search data")
       console.log(data);
-      var firstText = data[2][0];
-      console.log(firstText);
-      $("#bandInfo").html(firstText);
+      var description = data.data.place.description.text
+      var travelImage = data.data.place.main_media.media[0].url;
+      console.log(description)
+      console.log(poiID);
+      $("#bandInfo").html(description);
+      $("#bandPic").html(`<img src='${travelImage}' class='responsive-img valign'>`);
 
     },
     error: function (errorMessage) {
@@ -250,7 +259,10 @@ var bBox = bbResponse.south +","+ bbResponse.west + "," +bbResponse.north + "," 
       var name = data.data.places[i].name;
       var perex = data.data.places[i].perex;
       var thumbnail = data.data.places[i].thumbnail_url;
-
+      var poiID = data.data.places[i].id;
+      if (i == 0) {
+        contentSearch(poiID);
+      }
       var newTableRow = $("<tr>");
       var imageCell = $("<td>")
       var image = $('<img />',
@@ -274,4 +286,5 @@ var bBox = bbResponse.south +","+ bbResponse.west + "," +bbResponse.north + "," 
       alert(errorMessage);
     }
   });
+  
 }
