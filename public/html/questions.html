@@ -69,7 +69,44 @@
 
 </form>
 
-        <script type='text/javascript' src="js/index.js"></script>
+<div class='col-3 mb-2 mb-md-0'>
+  <div class="card">
+        <ul id='matchedCards' class="list-group"></ul>
+      </div>
+    </div>
+</div> 
+<div id='panel'></div>
+
+
+        <script type='text/javascript' src="js/index.js">
+        
+        // function addMatchCard() {
+        //     // using ajax that uses the url of our api routes and GET data
+        //     $.post('/api/user',
+        //     }).then(function (matchingUsers) {
+        //       console.log(matchingUsers, 'dbusers')
+        //       console.log('-------------------------');
+
+        //       for (var i = 0; i < matchingUsers.length; i++) {
+               
+        //           var cards = $('#matchedCards');
+        //          var cardCol = $('<li class="list-group-item col-sm-3 col-md-3 pb-2">');
+                  
+        //           cardCol.append(
+        //             $('<h3>').text('Name:'+ matchingUsers[i].name),
+        //             $('<h4>').text('City to visit: '+ matchingUsers[i].city),
+        //             $('<h4>').text('Country to visit: '+ matchingUsers[i].country),
+        //             $('<h4>').text('Age: '+ matchingUsers[i].age)
+        //           );
+        //           cards.append(cardCol);
+        //             }
+        //           });
+        //         };
+        //       addMatchCard();
+
+
+   
+        </script>
     </body>
 </html>
 
