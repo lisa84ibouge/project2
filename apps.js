@@ -23,7 +23,8 @@ function search() {
   wikiImages(q);
   //wikiSearchContent(q);
   googlePlaceSearch(q);
-  placeDetails(q);
+  boundingBox(q);
+  //placeDetails(q);
 };
 
 // $('button.related-artist').on('click', function() {
@@ -204,9 +205,27 @@ function googlePlaceSearch(txt) {
     }
   });*/
 }
+function boundingBox(txt) {
+  $.ajax({
+  type: "GET",
+    url: "https://api.sygictravelapi.com/1.1/en/places/list?query=" + encodeURIComponent(txt),
+    contentType: "application/json; charset=utf-8",
+    async: true,
+    dataType: "json",
+    headers: { 'x-api-key': 'aOz451xNYq4V2Z8wsYDIV2lZWqBENUTK2tk1ersn'},
+    success: function (data, err) {
+      console.log("This is the bounding box response: "); 
+      console.log(data);
+var bbResponse = data.data.places[0].bounding_box;
+placeDetails(bbResponse);
+
+}
+});
+}
 
 
- function placeDetails(txt) { 
+ function placeDetails(bbResponse) { 
+var bBox = bbResponse.south +","+ bbResponse.west + "," +bbResponse.north + "," + bbResponse.east;
 
   $.ajax({
     type: "GET",
@@ -215,7 +234,7 @@ function googlePlaceSearch(txt) {
     //url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,opening_hours,website,formatted_phone_number&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
     //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=query&list=search&srsearch=" + txt + "&format=jsonfm",
     //url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,photo,opening_hours,website&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
-    url: "https://api.sygictravelapi.com/1.1/en/places/list?bounds=51.487744,-0.1879067,51.526849,-0.0464577&levels=poi",
+    url: "https://api.sygictravelapi.com/1.1/en/places/list?bounds=" + bBox + "&levels=poi",
     contentType: "application/json; charset=utf-8",
     async: true,
     dataType: "json",
@@ -245,7 +264,7 @@ function googlePlaceSearch(txt) {
         tableObject.append(newTableRow);
       
      }
-      $("#placeDetails").append(tableObject);
+      $("#placeDetails").html(tableObject);
       
      
       console.log(data.data.places[0].name);
