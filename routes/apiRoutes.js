@@ -17,8 +17,6 @@ module.exports = function(app) {
       res.json(users);
     });
   });
-
-
   // create
   app.post("/api/user/", function (req, res) {
     db.User.create({
@@ -33,8 +31,12 @@ module.exports = function(app) {
     }).then(function (dbUser) {
       db.User.findAll({
         where: {
-          [Op.or]: [{ city: req.body.city }, { country: req.body.country }]
-        }
+          [Op.or]: [{ city: req.body.city }, { country: req.body.country }],
+          id:{
+             [Op.not]:[req.body.id]
+            }
+        },
+    
       }).then(function(matchingUsers){
         // console.log('here ---->', matchingUsers)
         for (let i = 0; i < matchingUsers.length; i++) {
