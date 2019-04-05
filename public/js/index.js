@@ -6,7 +6,7 @@ $('#submit').on('click',function(){
            photo :$('#user-url').val().trim(),
            age: parseInt($('#user-age').val().trim()),
            city: $('#user-city').val().trim(),
-           state: $('#user-state').val().trim(),
+        //    state: $('#user-state').val().trim(),
            country: $('#user-country').val().trim(),
            lang: $('#user-lang').val().trim(),
            secLang: $('#user-secLang').val().trim()
@@ -21,30 +21,44 @@ $('#submit').on('click',function(){
            var userInputpic = $('#card-pic').attr('src', userInputs.photo);
            var userInputAge = $('<p>' + userInputs.age + '</p>');
            var userInputCity = $('<p>' + userInputs.city + '</p>');
-           var userInputState = $('<p>' + userInputs.state + '</p>');
+        //    var userInputState = $('<p>' + userInputs.state + '</p>');
            var userInputCountry = $('<p>' + userInputs.country+ '</p>');
            var userInputLang = $('<p>' + userInputs.lang + '</p>');
            var userInputSecLang = $('<p>' + userInputs.secLang + '</p>');
 
            $('#card-name').html(userInputName);
-           $('#card-pic').append(userInputpic);
-        //    $('#card-pic').attr('src', userInputpic);
+           $('#card-pic').append(userInputpic);;
            $('#card-age').html(userInputAge);
            $('#card-city').html(userInputCity);
-           $('#card-state').html(userInputState);
+        //    $('#card-state').html(userInputState);
            $('#card-country').html(userInputCountry);
            $('#card-lang').html(userInputLang);
            $('#card-secLang').html(userInputSecLang);
-        //    $('#card-state').html(userInputState);
+       
            console.log(data,'data')
+
+           
+
+// ------------below is for matched users
+
+
+    //        var addCols = function (num){
+    //         for (var i=1;i<=num;i++) {
+    //             var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
+    //             var myPanel = $('<div class="card card-outline-info" id="'+i+'Panel"><div class="card-block"><div class="card-title"><span>Card #'+i+'</span><button type="button" class="close" data-target="#'+i+'Panel" data-dismiss="alert"><span class="float-right"><i class="fa fa-remove"></i></span></button></div><p>Some text in '+i+' </p><img src="//placehold.it/50/eeeeee" class="rounded rounded-circle"></div></div>');
+    //             myPanel.appendTo(myCol);
+    //             myCol.appendTo('#contentPanel');
+    //         }
+            
+            
+    //         $('.close').on('click', function(e){
+    //           e.stopPropagation();  
+    //               var $target = $(this).parents('.col-sm-3');
+    //               $target.hide('slow', function(){ $target.remove(); });
+    //         });
+    //     };
        });
-
-
-
-
-
-
-    })
+    });
 
 
 
@@ -101,50 +115,3 @@ $('#submit').on('click',function(){
 //         .text("ｘ");
 
 //       $li.append($button);
-
-//       return $li;
-//     });
-
-//     $exampleList.empty();
-//     $exampleList.append($examples);
-//   });
-// };
-
-// // handleFormSubmit is called whenever we submit a new example
-// // Save the new example to the db and refresh the list
-// var handleFormSubmit = function(event) {
-//   event.preventDefault();
-
-//   var example = {
-//     text: $exampleText.val().trim(),
-//     description: $exampleDescription.val().trim()
-//   };
-
-//   if (!(example.text && example.description)) {
-//     alert("You must enter an example text and description!");
-//     return;
-//   }
-
-//   API.saveExample(example).then(function() {
-//     refreshExamples();
-//   });
-
-//   $exampleText.val("");
-//   $exampleDescription.val("");
-// };
-
-// // handleDeleteBtnClick is called when an example's delete button is clicked
-// // Remove the example from the db and refresh the list
-// var handleDeleteBtnClick = function() {
-//   var idToDelete = $(this)
-//     .parent()
-//     .attr("data-id");
-
-//   API.deleteExample(idToDelete).then(function() {
-//     refreshExamples();
-//   });
-// };
-
-// // Add event listeners to the submit and delete buttons
-// $submitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
