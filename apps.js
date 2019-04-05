@@ -23,6 +23,7 @@ function search() {
   wikiImages(q);
   //wikiSearchContent(q);
   googlePlaceSearch(q);
+  placeDetails(q);
 };
 
 // $('button.related-artist').on('click', function() {
@@ -205,7 +206,7 @@ function googlePlaceSearch(txt) {
 }
 
 
-/* function placeDetails(name) { 
+ function placeDetails(txt) { 
 
   $.ajax({
     type: "GET",
@@ -213,19 +214,45 @@ function googlePlaceSearch(txt) {
     //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=opensearch&search=" + txt + "&limit=1&format=json&",
     //url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,opening_hours,website,formatted_phone_number&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
     //url: "https://cors-anywhere.herokuapp.com/http://en.wikivoyage.org/w/api.php?action=query&list=search&srsearch=" + txt + "&format=jsonfm",
-    url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,photo,opening_hours,website&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
+    //url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + txt + "&fields=name,rating,photo,opening_hours,website&key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM",
+    url: "https://api.sygictravelapi.com/1.1/en/places/list?bounds=51.487744,-0.1879067,51.526849,-0.0464577&levels=poi",
     contentType: "application/json; charset=utf-8",
-    async: false,
+    async: true,
     dataType: "json",
-    success: function (data, textStatus, jqXHR) {
+    headers: { 'x-api-key': 'aOz451xNYq4V2Z8wsYDIV2lZWqBENUTK2tk1ersn'},
+    success: function (data, err) {
+      console.log("This is the place details response: "); 
       console.log(data);
-      var firstText = data[2][0];
-      console.log(firstText);
-      $("#results").html(firstText);
+      //var firstText = data[2][0];
+     // console.log(firstText);
+     var tableObject = $("<table>");
+
+     for (var i= 0; i < data.data.places.length; i++) {
+      var name = data.data.places[i].name;
+      var perex = data.data.places[i].perex;
+      var thumbnail = data.data.places[i].thumbnail_url;
+
+      var newTableRow = $("<tr>");
+      var imageCell = $("<td>")
+      var image = $('<img />',
+      {
+        src: thumbnail
+      }).appendTo(imageCell);
+        var nameCell = $("<td>").text(name);
+        var perexCell = $("<td>").text(perex);
+       // var thumbnailCell = $("<td>").html(thumbnail);
+        $(newTableRow).append(nameCell, perexCell, imageCell)
+        tableObject.append(newTableRow);
+      
+     }
+      $("#placeDetails").append(tableObject);
+      
+     
+      console.log(data.data.places[0].name);
 
     },
     error: function (errorMessage) {
       alert(errorMessage);
     }
   });
-}*/
+}
