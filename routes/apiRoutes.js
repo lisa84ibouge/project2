@@ -23,8 +23,8 @@ module.exports = function(app) {
       name: req.body.name,
       city: req.body.city,
       photo: req.body.photo,
-      age:req.body.age,
-      lang:req.body.lang,
+      age: req.body.age,
+      lang: req.body.lang,
       country: req.body.country,
       secLang: req.body.secLang
 
@@ -32,25 +32,23 @@ module.exports = function(app) {
       db.User.findAll({
         where: {
           [Op.or]: [{ city: req.body.city }, { country: req.body.country }],
-          id:{
-             [Op.not]:[req.body.id]
-            }
         },
-    
-      }).then(function(matchingUsers){
-        // console.log('here ---->', matchingUsers)
+
+      }).then(function (matchingUsers) {
+        console.log('here ---->', matchingUsers)
         for (let i = 0; i < matchingUsers.length; i++) {
-          if(matchingUsers[i].city == db.User.city) {
-            console.log('matching:', matchingUsers[i].name, ': ', matchingUsers[i].city);
+          if (matchingUsers[i].city) {
+            console.log('matching city:', matchingUsers[i].name, ': ', matchingUsers[i].city);
+            // matching city is working. logging out matching city
           } else {
             console.log('Matching country: ', matchingUsers[i].country, 'matching name: ', matchingUsers[i].name)
           }
-          
+
         }
         // no need to run the for loop because the 'where' clause already filters 
         res.json(matchingUsers);
       })
-     
+
     });
 
   });
