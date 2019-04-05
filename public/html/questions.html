@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
     <head>
@@ -17,8 +16,8 @@
    
     </head>
     <body>
-      <div class="card" style="width: 18rem; display: none">
-        <img id="card-pic" crossorigin="" src="" width="220px" height='200px'>
+      <div class="card" style="width: 14rem; display: none">
+        <img id="card-pic" crossorigin="" src="" style='margin:0 auto;' width="180px" height='180px'>
         <div class="card-body">
           <p class="card-text" id='card-name'>Name:</p>
           <p class="card-text" id='card-city'>City</p>
@@ -68,15 +67,15 @@
     <button type="button" id='submit' class="btn btn-primary btn-lg btn-block">Submit</button>
 
 </form>
-
+<!-- 
 <div class='col-3 mb-2 mb-md-0'>
   <div class="card">
         <ul id='matchedCards' class="list-group"></ul>
       </div>
     </div>
-</div> 
+</div>  -->
 
-
+<div class='row' id='panel'></div>
 
         <script type='text/javascript' src="js/index.js">
         
@@ -86,7 +85,6 @@
         //     }).then(function (matchingUsers) {
         //       console.log(matchingUsers, 'dbusers')
         //       console.log('-------------------------');
-
         //       for (var i = 0; i < matchingUsers.length; i++) {
                
         //           var cards = $('#matchedCards');
@@ -103,10 +101,7 @@
         //           });
         //         };
         //       addMatchCard();
-
-
    
         </script>
     </body>
 </html>
-
