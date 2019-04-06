@@ -16,9 +16,11 @@ $("#submit").on("click", function() {
      city: $("#user-city")
        .val()
        .trim(),
+  
      country: $("#user-country")
        .val()
        .trim(),
+      
      lang: $("#user-lang")
        .val()
        .trim(),
@@ -26,6 +28,7 @@ $("#submit").on("click", function() {
        .val()
        .trim()
    };
+ 
    console.log("user input", userInputs);
  
    $.post("/api/user", userInputs, function(data) {
@@ -70,7 +73,7 @@ $("#submit").on("click", function() {
        //    };
        // });
  
-       var myCol = $('<div class="col-sm-3 col-md-3 py-4"></span></div>');
+       var myCol = $('<div class="col-sm-3 col-md-3 py-4"></div>');
        var myPanel = $(
          '<div class="card card-outline-info"><div class="card-block"><div class="card-title"><p>Name:' +
            data[i].name +

@@ -38,15 +38,16 @@ module.exports = function (app) {
 
       }).then(function (matchingUsers) {
         console.log('here ---->')
+        
         for (var i = 0; i < matchingUsers.length; i++) {
           if (matchingUsers[i].city == req.body.city) {
             console.log('matching name:', matchingUsers[i].name, ': ', matchingUsers[i].city, 'city');
             // matching city is working. logging out matching city
+       
         
           } else {
             console.log('Matching country: ', matchingUsers[i].country, 'matching name: ', matchingUsers[i].name)
-          }
-
+          } 
         }
   
         res.json(matchingUsers);
