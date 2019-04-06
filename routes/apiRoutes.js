@@ -19,8 +19,6 @@ module.exports = function (app) {
     });
   });
 
-
-
   // create
   app.post("/api/user/", function (req, res) {
     db.User.create({
@@ -35,18 +33,20 @@ module.exports = function (app) {
     }).then(function (dbUser) {
       db.User.findAll({
         where: {
-          [Op.or]: [{ city: req.body.city }, { country: req.body.country }]
-        }
-      }).then(function(matchingUsers){
-        // console.log('here ---->', matchingUsers)
-     
-        for (let i = 0; i < matchingUsers.length; i++) {
-          if(matchingUsers[i].city == db.User.city) {
-            console.log('matching:', matchingUsers[i].name, ': ', matchingUsers[i].city);
+          [Op.or]: [{ city: req.body.city }, { country: req.body.country }],
+        },
+
+      }).then(function (matchingUsers) {
+        console.log('here ---->')
+        for (var i = 0; i < matchingUsers.length; i++) {
+          if (matchingUsers[i].city == req.body.city) {
+            console.log('matching name:', matchingUsers[i].name, ': ', matchingUsers[i].city, 'city');
+            // matching city is working. logging out matching city
+        
           } else {
             console.log('Matching country: ', matchingUsers[i].country, 'matching name: ', matchingUsers[i].name)
           }
-          
+
         }
   
         res.json(matchingUsers);
@@ -55,5 +55,3 @@ module.exports = function (app) {
     });
 
   });
-
- 
