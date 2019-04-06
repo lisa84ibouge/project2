@@ -12,13 +12,12 @@ module.exports = function (app) {
     }).then(function (users) {
       console.log(users);
       res.json(users);
-    
     });
   });
 
   // create
   app.post("/api/user/", function (req, res) {
-    let temp;
+    var matching;
     db.User.findAll({
       where: {
         [Op.or]: [{ city: req.body.city }, { country: req.body.country }],
@@ -39,7 +38,6 @@ module.exports = function (app) {
       } else {
         // the else condition doesn't run
         console.log('No matches found!');
-        // res.redirect('/questions');
       };
     }).then(function() {
       db.User.create({
@@ -51,10 +49,11 @@ module.exports = function (app) {
       country: req.body.country,
       secLang: req.body.secLang
     }).then(function () {
-      console.log('temp here-----', temp)
+      console.log('temp here-----', matching)
+  
       // no need to run the for loop because the 'where' clause already filters 
       // res.json(temp);
-      res.send(temp)
+      res.send(matching)
     })
   })
 });
