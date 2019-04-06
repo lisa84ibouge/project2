@@ -50,28 +50,9 @@ $("#submit").on("click", function() {
     $("#card-secLang").html(userInputSecLang);
 
     console.log("data", data);
-
+    
+// creating cards dynamically
     for (var i = 0; i < data.length; i++) {
-      //    var cards = $('#matchedCards')
-      //    var cardImg = $('<img>');
-      //    var cardCol = $("<li class='list-group-item mt-4'>");
-
-      //    cardCol.append(
-      //       $('<h4>').text('Name:' + data[i].name),
-      //       $('<hr/>'),
-      //       $('<p>').text('City to visit: ' + data[i].city),
-      //       cardImg.attr('src', data[i].photo),
-      //       cardImg.css({
-      //          width:"90px",
-      //          height: '80px',
-      //       }),
-      //       $('<p>').text('Country to visit: ' + data[i].country),
-      //       $('<p>').text('Age: ' + data[i].age)
-      //    );
-      //  cards.append(cardCol);
-      //    };
-      // });
-
       var myCol = $('<div class="col-sm-3 col-md-3 py-4"></div>');
       var myPanel = $(
         '<div class="card card-outline-info"><div class="card-block"><div class="card-title"><p>Name:' +
@@ -99,6 +80,7 @@ $("#submit").on("click", function() {
     });
   });
 
+  // commented out for now. 
   // $("#user-name").val("");
   // $("#user-url").val("");
   // $("#user-age").val("");

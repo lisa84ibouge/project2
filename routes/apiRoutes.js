@@ -53,6 +53,7 @@ module.exports = function (app) {
       console.log('temp here-----', temp.length)
       // no need to run the for loop because the 'where' clause already filters 
       // res.json(temp);
+      
       res.send(temp)
     })
   })
