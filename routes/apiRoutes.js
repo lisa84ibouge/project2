@@ -2,19 +2,17 @@ var db = require("../models");
 var Op = db.Sequelize.Op;
 
 module.exports = function (app) {
-  // read the info at this path
   app.get("/api/users", function (req, res) {
     console.log(req.body, "req body?");
-    // req.query is the result of the query
     console.log(req.query);
     db.User.findAll({
       where: {
         city: req.query.city
       }
     }).then(function (users) {
-      // result is the result of query
       console.log(users);
       res.json(users);
+    
     });
   });
 

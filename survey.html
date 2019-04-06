@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Application JetSetMet</title>
+    <!-- Link to the jQuery Library -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Including Font Awesome Icons -->
+    <script src="https://use.fontawesome.com/b38c8ed4c7.js"></script>
+    <!-- Link to reset stylesheet -->
+    <link rel="stylesheet" href="css/reset.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Semantic UI -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+     <!--Style Sheet-->     
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="content">
+    <header>
+        <!-- NavBar -->
+        <div class="ui stackable secondary menu" id="menu">
+            <a class="active item" href="index.html">
+                <p class="navItem">Home</p>
+            </a>
+            <a class="item" href="browse.html">
+                <p class="navItem">Browse</p>
+            </a>
+            <a class="item" href="about.html">
+                <p class="navItem">About</p>
+            </a>
+            <a class="item" href="contactUs.html">
+                <p class="navItem">Contact Us</p>
+            </a>
+            <a class="item" href="login2.html">
+                <p class="navItem">Sign In</p>
+            </a>
+        </div>
+        <!-- NavBar End -->
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 z-depth-5 mainpanel">
+                    <div id="mainpanel-content">
+                        <h1>Survey Questions</h1>
+                        <div class="divider"></div>
+                        <h3>About You</h3>
+                        <div class="input-field col s6">
+                            <h5>Name</h5>
+                            <i class="material-icons prefix">account_circle</i>
+                            <input type="text" class="validate" placeholder="Your Name Here" id="userName">
+                        </div>
+                        <div class="input-field col s6">
+                            <h5>Submit a Link to your pic!</h5>
+                            <i class="material-icons prefix">picture_in_picture</i>
+                            <input type="text" class="validate" placeholder="Photo Link Here" id="userPhoto">
+                        </div>
+                        <!-- Survey Questions -->
+                        <div class="input-field col s12">
+                            <h3>Question 1</h3>
+                            <h5>City</h5>
+                            <select id="question1">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">1 (Strongly Disagree)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Strongly Agree)</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <h3>Question 2</h3>
+                            <h5>State</h5>
+                            <select id="question2">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">1 (Strongly Disagree)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Strongly Agree)</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <h3>Question 3</h3>
+                            <h5>Country</h5>
+                            <select id="question3">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">1 (Strongly Disagree)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Strongly Agree)</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <h3>Question 4</h3>
+                            <h5>Age</h5>
+                            <select id="question4">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">1 (Strongly Disagree)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Strongly Agree)</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <h3>Question 5</h3>
+                            <h5>Photo</h5>
+                            <select id="question5">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">1 (Strongly Disagree)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Strongly Agree)</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <h3>Question 6</h3>
+                            <h5>Gender</h5>
+                            <select id="question6">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">1 (Strongly Disagree)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Strongly Agree)</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <h3>Question 7</h3>
+                            <h5>First Language Spoken</h5>
+                            <select id="question7">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">1 (Strongly Disagree)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Strongly Agree)</option>
+                            </select>
+                        </div>
+                        <div class="input-field col s12">
+                            <h3>Question 8</h3>
+                            <h5>Second Language Spoken</h5>
+                            <select id="question8">
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">1 (Strongly Disagree)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5 (Strongly Agree)</option>
+                            </select>
+                        </div>
+                        <!-- Survey Submit Button -->
+                        <div>
+                            <button class="btn waves-effect waves-light" type="submit" name="action" id="submitButton">Submit Responses
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- footer -->
+    <div class="ui inverted vertical footer segment">
+            <div class="ui center aligned container">
+                <div class="seven wide column">
+                    <!--FIXME: Flight icon?--><i class="beer icon ui centered"></i>
+                </div>
+                <div class="ui horizontal inverted small divided link list">
+                    <a class="item" href="index.html">Site Map</a>
+                    <a class="item" href="contactUs.html">Contact Us</a>
+                    <a class="item" href="#">Terms and Conditions</a>
+                    <a class="item" href="#">Privacy Policy</a>
+                    <p>Copyright 2019 - All rights reserved &copy;</p>
+                </div>
+            </div>
+        </div>
+    <!-- end footer -->
+    </script>
+
+    <!-- Semantic UI script -->
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>
