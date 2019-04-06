@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
     <head>
@@ -17,8 +16,8 @@
    
     </head>
     <body>
-      <div class="card" style="width: 18rem; display: none">
-        <img id="card-pic" crossorigin="" src="" alt="Card image cap">
+      <div class="card" style="width: 14rem; display: none">
+        <img id="card-pic" crossorigin="" src="" style='margin:0 auto;' width="180px" height='180px'>
         <div class="card-body">
           <p class="card-text" id='card-name'>Name:</p>
           <p class="card-text" id='card-city'>City</p>
@@ -31,28 +30,28 @@
     <!-- forms should go on a different page -->
   <form>
     <div class="form-group">
-      <label for="user-interests">Name</label>
-      <input type="text" class="form-control" id="user-name" aria-describedby="">
+      <label for="user-interests">Name<small>(*Required)</small></label>
+      <input type="text" class="form-control" id="user-name" required>
     </div> 
 
     <div class="form-group">
-      <label for="user-url">Photo</label>
-      <input type="pic" class="form-control" id="user-url">
+      <label for="user-url">Photo<small>(*Required)</small></label>
+      <input type="pic" class="form-control" id="user-url" required>
     </div>
 
     <div class="form-group">
-      <label for="user-age">Age</label>
+      <label for="user-age">Age<small>(*Required)</small></label>
       <input type="number" class="form-control" id="user-age">
     </div>
 
     <div class="form-group">
-        <label for="user-city">City</label>
-        <input type="text" class="form-control" id="user-city">
+        <label for="user-city">City<small>(*Required)</small></label>
+        <input type="text" class="form-control" id="user-city" required>
       </div>
 
     <div class="form-group">
-      <label for="user-country">Country</label>
-      <input type="text" class="form-control" id="user-country">
+      <label for="user-country">Country<small>(*Required)</small></label>
+      <input type="text" class="form-control" id="user-country" required>
     </div>
     
     <div class="form-group">
@@ -69,7 +68,33 @@
 
 </form>
 
-        <script type='text/javascript' src="js/index.js"></script>
+<div class='row' id='panel'></div>
+
+        <script type='text/javascript' src="js/index.js">
+        
+        // function addMatchCard() {
+        //     // using ajax that uses the url of our api routes and GET data
+        //     $.post('/api/user',
+        //     }).then(function (matchingUsers) {
+        //       console.log(matchingUsers, 'dbusers')
+        //       console.log('-------------------------');
+        //       for (var i = 0; i < matchingUsers.length; i++) {
+               
+        //           var cards = $('#matchedCards');
+        //          var cardCol = $('<li class="list-group-item col-sm-3 col-md-3 pb-2">');
+                  
+        //           cardCol.append(
+        //             $('<h3>').text('Name:'+ matchingUsers[i].name),
+        //             $('<h4>').text('City to visit: '+ matchingUsers[i].city),
+        //             $('<h4>').text('Country to visit: '+ matchingUsers[i].country),
+        //             $('<h4>').text('Age: '+ matchingUsers[i].age)
+        //           );
+        //           cards.append(cardCol);
+        //             }
+        //           });
+        //         };
+        //       addMatchCard();
+   
+        </script>
     </body>
 </html>
-

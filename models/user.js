@@ -1,5 +1,3 @@
-
-
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     name: {
@@ -21,22 +19,21 @@ module.exports = function(sequelize, DataTypes) {
     },
     photo: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     },
     country: {
       type: DataTypes.STRING,
-      allowNull:false,
-      defaultValue: 'USA'
-      
+      allowNull: false,
+      defaultValue: "USA"
     },
     lang: {
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull: true
     },
     secLang: {
-      type:DataTypes.STRING,
-      allowNull:true,
+      type: DataTypes.STRING,
+      allowNull: true
     }
   });
-   return User;
+  return User;
 };
