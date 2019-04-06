@@ -19,50 +19,37 @@ module.exports = function(app) {
   });
   // create
   app.post("/api/user/", function (req, res) {
-    db.User.create({
-      name: req.body.name,
-      city: req.body.city,
-      photo: req.body.photo,
-      age: req.body.age,
-      lang: req.body.lang,
-      country: req.body.country,
-      secLang: req.body.secLang
-
-    }).then(function (dbUser) {
-      db.User.findAll({
-        where: {
-          [Op.or]: [{ city: req.body.city }, { country: req.body.country }],
-        },
-
-      }).then(function (matchingUsers) {
-        console.log('here ---->')
-        
-        for (var i = 0; i < matchingUsers.length; i++) {
-          if (matchingUsers[i].city == req.body.city) {
-            console.log('matching name:', matchingUsers[i].name, ': ', matchingUsers[i].city, 'city');
-            // matching city is working. logging out matching city
-          } else if (matchingUsers[i].country == req.body.country){
-            console.log('Matching country: ', matchingUsers[i].country, 'matching name: ', matchingUsers[i].name)
-          } 
+    db.User.findAll({
+      where: {
+        [Op.or]: [{ city: req.body.city }, { country: req.body.country }],
+      },
+    }).then(function (matchingUsers) {
+      console.log('here ---->')
+      for (var i = 0; i < matchingUsers.length; i++) {
+        if (matchingUsers[i].city == req.body.city) {
+          console.log('matching name:', matchingUsers[i].name, ': ', matchingUsers[i].city, 'city');
+          // matching city is working. logging out matching city
+        } else if (matchingUsers[i].country == req.body.country) {
+          console.log('Matching country: ', matchingUsers[i].country, 'matching name: ', matchingUsers[i].name)
+        } else {
+          // the else condition doesn't run
+          console.log('No matches found!');
+          res.redirect('/questions')
         }
+      } db.User.create({
+        name: req.body.name,
+        city: req.body.city,
+        photo: req.body.photo,
+        age: req.body.age,
+        lang: req.body.lang,
+        country: req.body.country,
+        secLang: req.body.secLang
+      }).then(function (dbUser) {
         // no need to run the for loop because the 'where' clause already filters 
         res.json(matchingUsers);
       })
-
-//       // Here we filter the friendsData to not include the friend who's name is the same as our newUser.
-// var filteredFriendsData = friendsData.filter(function(friend) {
-//   // to allow friends to have the same name 
-//   // I would use an email address to match on
-//   return friend.name !== newUserData.name
-// })
-
-// console.log(filteredFriendsData)
-
     });
-
   });
-
-  // code that was working(with helps from alex and arjun),except the if statment.
 
 //   app.post("/api/user/", function(req, res) {
 //     db.User.create({
