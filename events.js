@@ -25,4 +25,3 @@ $('.submit').on('click', function (event) {
         }
         return false;
     });
-});
