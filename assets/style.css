@@ -1,0 +1,37 @@
+body {
+    background-color: purple;
+}
+.footer {
+    margin-top: 200px;
+}
+
+.mini {
+
+font-size: 200%;
+margin-top: 100px;
+margin-left: 400px;
+margin-right: 400px;
+}
+.two {
+    margin-top: 400px;
+    font-size: 30px;
+}
+.password {
+    
+    font-size: 30px;
+    margin-left: 15px;
+}
+
+#login {
+    margin-top: 50px;
+    margin-left: 250px;
+    font-size: 25px;
+    background-color: #09dd3e
+}
+.inverted {
+
+    margin-top: 100px;
+}
+.item1 {
+    margin-left: 200px
+}
