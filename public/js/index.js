@@ -99,11 +99,11 @@ $("#submit").on("click", function() {
     });
   });
 
-  $("#user-name").val("");
-  $("#user-url").val("");
-  $("#user-age").val("");
-  $("#user-city").val("");
-  $("#user-country").val("");
-  $("#user-lang").val("");
-  $("#user-secLang").val("");
+  // $("#user-name").val("");
+  // $("#user-url").val("");
+  // $("#user-age").val("");
+  // $("#user-city").val("");
+  // $("#user-country").val("");
+  // $("#user-lang").val("");
+  // $("#user-secLang").val("");
 });
