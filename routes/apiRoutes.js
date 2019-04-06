@@ -36,18 +36,27 @@ module.exports = function(app) {
 
       }).then(function (matchingUsers) {
         console.log('here ---->')
+        
         for (var i = 0; i < matchingUsers.length; i++) {
           if (matchingUsers[i].city == req.body.city) {
             console.log('matching name:', matchingUsers[i].name, ': ', matchingUsers[i].city, 'city');
             // matching city is working. logging out matching city
-          } else {
+          } else if (matchingUsers[i].country == req.body.country){
             console.log('Matching country: ', matchingUsers[i].country, 'matching name: ', matchingUsers[i].name)
-          }
-
+          } 
         }
         // no need to run the for loop because the 'where' clause already filters 
         res.json(matchingUsers);
       })
+
+//       // Here we filter the friendsData to not include the friend who's name is the same as our newUser.
+// var filteredFriendsData = friendsData.filter(function(friend) {
+//   // to allow friends to have the same name 
+//   // I would use an email address to match on
+//   return friend.name !== newUserData.name
+// })
+
+// console.log(filteredFriendsData)
 
     });
 

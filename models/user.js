@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     photo: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
     },
     country: {
       type: DataTypes.STRING,
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     lang: {
       type: DataTypes.STRING,
-      allowNull:false,
+      allowNull:true,
     },
     secLang: {
       type:DataTypes.STRING,
