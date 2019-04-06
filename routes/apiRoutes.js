@@ -17,7 +17,7 @@ module.exports = function (app) {
 
   // create
   app.post("/api/user/", function (req, res) {
-    var matching;
+    let temp;
     db.User.findAll({
       where: {
         [Op.or]: [{ city: req.body.city }, { country: req.body.country }],
@@ -26,18 +26,19 @@ module.exports = function (app) {
       temp = matchingUsers;
       console.log('here ---->', temp.length)
       // if there is a match, then do the for loop
-      if (matchingUsers.length > 0) {
-        for (var i = 0; i < matchingUsers.length; i++) {
-          if (matchingUsers[i].city == req.body.city) {
-            console.log('matching name:', matchingUsers[i].name, ': ', matchingUsers[i].city, 'city');
+      if (temp.length > 0) {
+        for (var i = 0; i < temp.length; i++) {
+          if (temp[i].city == req.body.city) {
+            console.log('matching name:', temp[i].name, ': ', temp[i].city, 'city');
             // matching city is working. logging out matching city
           } else {
-            console.log('Matching country: ', matchingUsers[i].country, 'matching name: ', matchingUsers[i].name);
+            console.log('Matching country: ', temp[i].country, 'matching name: ', temp[i].name);
           }
         }
       } else {
         // the else condition doesn't run
         console.log('No matches found!');
+        // res.redirect('/questions');
       };
     }).then(function() {
       db.User.create({
@@ -49,11 +50,10 @@ module.exports = function (app) {
       country: req.body.country,
       secLang: req.body.secLang
     }).then(function () {
-      console.log('temp here-----', matching)
-  
+      console.log('temp here-----', temp.length)
       // no need to run the for loop because the 'where' clause already filters 
       // res.json(temp);
-      res.send(matching)
+      res.send(temp)
     })
   })
 });
