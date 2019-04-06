@@ -9,5 +9,11 @@ module.exports= function(app){
   app.get('/questions', function(req,resp){
     resp.sendFile(path.join(__dirname, '../public/html/questions.html'))
   })
+  
+  app.get("/survey",(req, resp)=>{
+    resp.sendFile(path.join(__dirname,"../public/html/survey.html"));
+  })
+
+  
 };
 
