@@ -63,14 +63,15 @@ $("#submit").on("click", function() {
     
       var myCol = $('<div class="col-sm-3 col-md-3 py-4"></div>');
       var myPanel = $(
-        '<div class="card card-outline-info"><div class="card-block"><div class="card-title"><p>Name:' +
+        '<div class="card card-outline-info"><div class="card-block"><div class="card-title"><img src="' 
+        +data[i].photo +
+          '" class="rounded rounded-circle"width="100px"height="100px"><p>Name:' +
           data[i].name +
           "</p><button type=\"button\" class=\"close\" data-target=\"#" +
           i +
           'Panel" data-dismiss="alert"><span class="float-right"><i class="fa fa-remove"></i></span></button></div><p>From: ' +
           data[i].city +
-          " </p><p>Country to visit: " +data[i].countryTwo +' </p><p>City to visit: "' +data[i].cityTwo +'</p><img src="' +data[i].photo +
-          '" class="rounded rounded-circle"width="100px"height="100px"></div></div>'
+          " </p><p>Country to visit: " +data[i].countryTwo +' </p><p>City to visit: "' +data[i].cityTwo +'</p></div></div>'
       );
       myPanel.appendTo(myCol);
       myCol.appendTo("#panel");

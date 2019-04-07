@@ -49,6 +49,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     email:{
       type:DataTypes.STRING,
+    },
+    userName:{
+      type:DataTypes.STRING,
     }
   });
   return User;
