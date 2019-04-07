@@ -7,12 +7,17 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    // this field for city and country of origin
     city: {
+      // country: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
-      }
+      },
     },
     age: {
       type: DataTypes.INTEGER(2)
@@ -21,10 +26,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    country: {
+    // countryTwo is user's second choice of country to visit
+    countryTwo: {
+      type:DataTypes.STRING,
+      allowNull:false
+    },
+    cityTwo: {
       type: DataTypes.STRING,
-      allowNull: false,
-      defaultValue: "USA"
+      allowNull:false
+    },
+    bio: {
+      type: DataTypes.TEXT,
+      allowNull: true
     },
     lang: {
       type: DataTypes.STRING,
@@ -33,6 +46,9 @@ module.exports = function(sequelize, DataTypes) {
     secLang: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    email:{
+      type:DataTypes.STRING,
     }
   });
   return User;
