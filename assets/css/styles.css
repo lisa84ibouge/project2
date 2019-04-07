@@ -10,10 +10,13 @@ body {
 
 h1 {
     font-size: 600%;
-    color: gold;
-    margin-left: float;
+    color:gold;
+    margin-left: 10%;
     font-weight: bold;
+    font-family: 'Cinzel Decorative', cursive;
 }
+
+
 .footer {
     margin-top: 200px;
 }
