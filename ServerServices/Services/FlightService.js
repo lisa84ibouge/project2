@@ -9,23 +9,28 @@ class FlightsService {
     /**
      * Pre-Condition: params must be an array.
      * 
-     * @param {Array} params
-     *  @returns An Array of objects. Returns an empty array if there are no results.
+     * @param {Object} params 
+     *  Accepts an objects two properties, dest and home
+     * @returns An Array of objects. Returns an empty array if there are no results.
      */
     async MakeAPICall(params) {
         try {
             if (!Array.isArray(params)) throw "Invaild params";
+
             //get iataCode for city
-            let airport = await axios.get(" http://aviation-edge.com/v2/public/autocomplete?key=" + this.API_KEY + "&city=" + params[0]);
+            let arrivalAirport = await axios.get("http://aviation-edge.com/v2/public/autocomplete?key=" + this.API_KEY + "&city=" + params.dest);
+
+            let departureAirport = await axios.get("http://aviation-edge.com/v2/public/autocomplete?key=" + this.API_KEY + "&city=" + params.home);
+
             //get timetable for flights
-            let flights = await axios.get(" http://aviation-edge.com/v2/public/timetable?key=" + this.API_KEY + "&iataCode=" + airport.data.cities[0].codeIataCity + "&type=departure");
+            let flights = await axios.get(" http://aviation-edge.com/v2/public/timetable?key=" + this.API_KEY + "&iataCode=" + arrivalAirport.data.cities[0].codeIataCity + "&type=departure");
 
             let requestedFlights = [];
 
             for (let i = 0; i < flights.data.length; i++) {
                 let arrival = flights.data[i].arrival;
                 //filter departures for destination 
-                if (arrival.iataCode === params[1] && flights.data[i].status === "scheduled") {
+                if (arrival.iataCode === arrivalAirport.data.cities[0].codeIataCity && flights.data[i].status === "scheduled") {
                     requestedFlights.push(flights.data[i]);
                 }
             }
