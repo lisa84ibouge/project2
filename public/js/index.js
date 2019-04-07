@@ -87,11 +87,12 @@ $("#submit").on("click", function() {
   });
 
   // commented out for now. 
-  // $("#user-name").val("");
-  // $("#user-url").val("");
-  // $("#user-age").val("");
-  // $("#user-city").val("");
-  // $("#user-country").val("");
-  // $("#user-lang").val("");
-  // $("#user-secLang").val("");
+  $("#user-name").val("");
+  $("#user-url").val("");
+  $("#user-age").val("");
+  $("#user-city").val("");
+  $("#user-countryTwo").val("");
+  $("#user-cityTwo").val("");
+  $("#user-lang").val("");
+  $("#user-secLang").val("");
 });
