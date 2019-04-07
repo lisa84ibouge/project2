@@ -1,9 +1,12 @@
 var db = require("../models");
 var path = require("path");
+var express = require("express");
+var passport = require("passport");
+
 
 module.exports = function(app) {
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/html/login.html"));
+  app.get("/",  {
+    //res.sendFile(path.join(__dirname, "../public/html/login.html"));
   });
 
   app.get('/questions', function (req, resp) {

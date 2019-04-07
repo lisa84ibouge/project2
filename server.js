@@ -15,6 +15,30 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 
 var app = express();
+
+var session = require("express-session");
+var passport = require("passport");
+var Auth0Strategy = require("passport-auth0");
+
+var sess = {
+  secret: "testsecret",
+  cookie: {},
+  resave: false,
+  saveUninitialized: true
+};
+
+var startegy = new Auth0Strategy({
+  domain: process.env.AUTH0_DOMAIN,
+  clientID: process.env.AUTO0_CLIENT_ID,
+  clientSecert: process.env.AUTH0_CLIENT_SECRET,
+  callbackURL: process.env.AUTH0_CALLBACK_URL || "http://localhost:8080"
+},(accessToken, refresToken, extraPrams, profile, done) => {
+  return done(null, profile);
+}
+
+);
+passport.use(startegy);
+
 var PORT = process.env.PORT || 8080;
 
 // Middleware
@@ -40,6 +64,9 @@ app.use(function(req, res, next) {
   );
   next();
 });
+app.use(session(sess));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 require("./routes/apiRoutes")(app);

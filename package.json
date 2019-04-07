@@ -19,8 +19,11 @@
     "eslint": "^5.15.3",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+    "express-session": "^1.15.6",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-auth0": "^1.1.0",
     "sequelize": "^5.2.12"
   },
   "description": "Project 2 Starter",
