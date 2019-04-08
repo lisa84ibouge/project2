@@ -29,10 +29,10 @@ var sess = {
 
 var startegy = new Auth0Strategy({
   domain: process.env.AUTH0_DOMAIN,
-  clientID: process.env.AUTO0_CLIENT_ID,
-  clientSecert: process.env.AUTH0_CLIENT_SECRET,
-  callbackURL: process.env.AUTH0_CALLBACK_URL || "http://localhost:8080"
-},(accessToken, refresToken, extraPrams, profile, done) => {
+  clientID: process.env.AUTH0_CLIENT_ID,
+  clientSecret: process.env.AUTH0_CLIENT_SECRET,
+  callbackURL: process.env.AUTH0_CALLBACK_URL || "http://localhost:8080/callback",
+}, (accessToken, refresToken, extraPrams, profile, done) => {
   return done(null, profile);
 }
 
@@ -56,7 +56,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // codes for cors..
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -64,6 +64,15 @@ app.use(function(req, res, next) {
   );
   next();
 });
+
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
+
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -72,7 +81,7 @@ app.use(passport.session());
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-var syncOptions = { force: false};
+var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -81,8 +90,8 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
+db.sequelize.sync(syncOptions).then(function () {
+  app.listen(PORT, function () {
     console.log("Listening on port: http://localhost:" + PORT);
   });
 });

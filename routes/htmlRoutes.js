@@ -15,6 +15,7 @@ module.exports = function (app) {
     scope: "openid email profile"
     //res.sendFile(path.join(__dirname, "../public/html/login.html"));
   }), (req, res) => {
+    console.log(res);
     res.redirect("/form");
   })
 
@@ -22,6 +23,7 @@ module.exports = function (app) {
   app.get('/questions', function (req, resp) {
     resp.sendFile(path.join(__dirname, '../public/html/questions.html'))
   })
+
 
   app.get("/survey", (req, resp) => {
     resp.sendFile(path.join(__dirname, "../public/html/survey.html"));
@@ -40,13 +42,15 @@ module.exports = function (app) {
       if (err) { return next(err); }
       if (!user) { return resp.redirect("/"); }
       req.logIn(user, function (err) {
-        if (err) { return (next); }
-        const returnTo = req.session.returnTo;
+        console.log("---------");
+        console.log(user);
+        if (err) { console.log(err); return (next); }
+        const retTo = req.session.returnTo;
         delete req.session.returnTo;
-        res.redirect(retrunTo || "/form");
+        resp.redirect(retTo || "/form");
 
       });
-    })(req, res, next);
+    })(req, resp, next);
   })
 
   app.get("/logout", (req, res) => {
