@@ -44,10 +44,7 @@ module.exports = function (app) {
             console.log('matches')
           }
         }
-      // } else {
-      //   // the else condition doesn't run
-      //   console.log('No matches found!');
-      //   // res.redirect('/questions');
+    
        };
     }).then(function() {
       db.User.create({
@@ -62,6 +59,9 @@ module.exports = function (app) {
       bio: req.body.bio
     }).then(function () {
       console.log('temp here-----', temp.length)
+      
+      var noMatch =[{notFound:'sorry no matches'}];
+      res.render('index',noMatch[0])
       // if(temp.length == 0 ){
       //   res.render('/api/user',noMatch)
       // }
@@ -69,7 +69,7 @@ module.exports = function (app) {
       // no need to run the for loop because the 'where' clause already filters 
       // res.json(temp);
       
-      res.send(temp)
+      // res.send(temp)
     })
   })
 });
