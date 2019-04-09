@@ -12,7 +12,7 @@ $("#submit").on("click", function() {
         .val()
         .trim()
     ),
-    city: $("#user-city")
+    cityOne: $("#user-cityOne")
       .val()
       .toLowerCase()
       .trim(),
@@ -40,7 +40,7 @@ $("#submit").on("click", function() {
     var userInputName = $("<p>" + userInputs.name + "</p>");
     var userInputpic = $("#card-pic").attr("src", userInputs.photo);
     var userInputAge = $("<p>" + userInputs.age + "</p>");
-    var userInputCity = $("<p>" + userInputs.city + "</p>");
+    var userInputCityOne = $("<p>" + userInputs.cityOne + "</p>");
     var userInputCountryTwo = $("<p>" + userInputs.countryTwo + "</p>");
     var userInputCityTwo = $("<p>" + userInputs.cityTwo + "</p>");
     var userInputLang = $("<p>" + userInputs.lang + "</p>");
@@ -49,7 +49,7 @@ $("#submit").on("click", function() {
     $("#card-name").html(userInputName);
     $("#card-pic").append(userInputpic);
     $("#card-age").html(userInputAge);
-    $("#card-city").html(userInputCity);
+    $("#card-cityOne").html(userInputCityOne);
     $("#card-countryTwo").html(userInputCountryTwo);
     $("#card-cityTwo").html(userInputCityTwo);
     $("#card-lang").html(userInputLang);
@@ -70,7 +70,7 @@ $("#submit").on("click", function() {
           "</p><button type=\"button\" class=\"close\" data-target=\"#" +
           i +
           'Panel" data-dismiss="alert"><span class="float-right"><i class="fa fa-remove"></i></span></button></div><p>From: ' +
-          data[i].city +
+          data[i].cityOne +
           " </p><p>Country to visit: " +data[i].countryTwo +' </p><p>City to visit: "' +data[i].cityTwo +'</p></div></div>'
       );
       myPanel.appendTo(myCol);
@@ -88,12 +88,12 @@ $("#submit").on("click", function() {
   });
 
   // commented out for now. 
-  $("#user-name").val("");
-  $("#user-url").val("");
-  $("#user-age").val("");
-  $("#user-city").val("");
-  $("#user-countryTwo").val("");
-  $("#user-cityTwo").val("");
-  $("#user-lang").val("");
-  $("#user-secLang").val("");
+  // $("#user-name").val("");
+  // $("#user-url").val("");
+  // $("#user-age").val("");
+  // $("#user-cityOne").val("");
+  // $("#user-countryTwo").val("");
+  // $("#user-cityTwo").val("");
+  // $("#user-lang").val("");
+  // $("#user-secLang").val("");
 });

@@ -7,7 +7,7 @@ module.exports = function (app) {
     console.log(req.query);
     db.User.findAll({
       where: {
-        city: req.query.city
+        cityOne: req.query.cityOne
       }
     }).then(function (users) {
       console.log(users);
@@ -22,7 +22,7 @@ module.exports = function (app) {
     db.User.findAll({
       where: {
         [Op.or]: [
-          { city: req.body.city }, 
+          { cityOne: req.body.cityOne }, 
           { countryTwo: req.body.countryTwo },
           { cityTwo:req.body.cityTwo}
           ],
@@ -33,7 +33,7 @@ module.exports = function (app) {
       // if there is a match, then do the for loop
       if (temp.length > 0) {
         for (var i = 0; i < temp.length; i++) {
-          if (temp[i].city == req.body.city) {
+          if (temp[i].cityOne == req.body.cityOne) {
             console.log('matching name:', temp[i].name, ': ', temp[i].city, 'city/country');
             // matching city is working. logging out matching city
           } else if (temp[i].countryTwo == req.body.countryTwo) {
@@ -49,7 +49,7 @@ module.exports = function (app) {
     }).then(function() {
       db.User.create({
       name: req.body.name,
-      city: req.body.city,
+      cityOne: req.body.cityOne,
       countryTwo :req.body.countryTwo,
       cityTwo:req.body.cityTwo,
       photo: req.body.photo,
@@ -59,15 +59,8 @@ module.exports = function (app) {
       bio: req.body.bio
     }).then(function () {
       console.log('temp here-----', temp.length)
-      
-      var noMatch =[{notFound:'sorry no matches'}];
-      res.render('index',noMatch[0])
-      // if(temp.length == 0 ){
-      //   res.render('/api/user',noMatch)
-      // }
-   
       // no need to run the for loop because the 'where' clause already filters 
-      // res.json(temp);
+      res.json(temp);
       
       // res.send(temp)
     })
