@@ -60,7 +60,10 @@ $("#submit").on("click", function() {
 // creating cards dynamically
     for (var i = 0; i < data.length; i++) {
       
-    
+      if(data.length === 0){
+      
+        
+      }
       var myCol = $('<div class="col-sm-3 col-md-3 py-4"></div>');
       var myPanel = $(
         '<div class="card card-outline-info"><div class="card-block"><div class="card-title"><img src="' 

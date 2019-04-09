@@ -62,13 +62,8 @@ module.exports = function (app) {
       bio: req.body.bio
     }).then(function () {
       console.log('temp here-----', temp.length)
-      // if(temp.length == 0 ){
-      //   res.render('/api/user',noMatch)
-      // }
-   
       // no need to run the for loop because the 'where' clause already filters 
       // res.json(temp);
-      
       res.send(temp)
     })
   })
