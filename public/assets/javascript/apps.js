@@ -1,3 +1,8 @@
+$(document).ready(function () {
+search();
+
+});
+
 $(function () {
   $('#search-btn').click(function (e) {
     e.preventDefault();
@@ -8,6 +13,7 @@ $(function () {
 
 
 function search() {
+  //add Delbert's function to call AJAX call to load flight API with key 
   //clear results
   $('#results').html('');
   $('#buttons').html('');

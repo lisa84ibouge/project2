@@ -5,15 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+  <!--  <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
     <!-- Including Font Awesome Icons -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Semantic UI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- CSS -->
     <link href="/styles/styles.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--JavaScript-->
-    <script src="events.js"></script>
+    <script src="js/index.js"></script>
 </head>
 <body>
 
@@ -40,27 +41,28 @@
             <br>
 
 <!--Form start-->
+<form id="form" action="/matches" method="POST">
 <h4 class="ui dividing header">Personal Information</h4>
 <div class="ui form">
   <div class="three fields">
     <div class="field">
       <label>First Name:</label>
-      <input type="text" placeholder="First Name">
+      <input name="name" type="text" placeholder="First Name">
     </div>
     <div class="field">
       <label>Last Name:</label>
-      <input type="text" placeholder="Last Name">
+      <input name="lastName" type="text" placeholder="Last Name">
     </div>
     <div class="field">
       <label>Picture:</label>
-      <input type="text" placeholder="Personal Photo">
+      <input name="photo" type="text" placeholder="Personal Photo">
     </div>
   </div>
   
     <div class="three fields">
         <div class="field">
             <label>Age:</label>
-            <input type="number" placeholder="Age">
+            <input name="age" type="number" placeholder="Age">
         </div>
         <div class="field">
             <label>Gender:</label>
@@ -72,14 +74,14 @@
         </div>
         <div class="field">
             <label>Primary Language:</label>
-            <input type="text" placeholder="Language Spoken">
+            <input name="lang" type="text" placeholder="Language Spoken">
         </div>
     </div>
 
     <div class="two fields">
         <div class="field">
             <label>City:</label>
-            <input type="text" placeholder="City">
+            <input name="city" type="text" placeholder="City">
         </div>
         <div class="field">
             <label>Country:</label>
@@ -113,12 +115,12 @@
     <div class="field">
       <div class="two fields">
         <div class="required field">
-            <label>City:</label>
-          <input type="text" name="City" placeholder="City">
+            <label>City Two:</label>
+          <input name="cityTwo" type="text" name="City" placeholder="City">
         </div>
         <div class="required field">
             <label>Country:</label>
-          <input type="text" name="Country" placeholder="Country">
+          <input name="countryTwo" type="text" name="Country" placeholder="Country">
         </div>
     </div>
         <!--optional-->
@@ -132,8 +134,8 @@
                   <input type="text" name="Country" placeholder="Country">
             </div>
         </div>
-        <div class="ui submit button">Submit</div>
-    </form>
+        <input type="submit" id="submit" class="ui submit button">Submit</input>
+    <!--</form>-->
     </div>
 
     </div>

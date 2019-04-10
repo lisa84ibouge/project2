@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css?family=Bungee+Hairline" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
   <!--css linked-->
-  <link rel='stylesheet' href='assets/css/styles.css'> 
+  <link rel='stylesheet' href='/assets/css/styles.css'> 
   <!--Google Web API library-->
   <!--<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>-->
   <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM&libraries=places"></script>-->
@@ -81,7 +81,7 @@ async defer></script>
       <div class="input-field col s12 z-depth-5" id="searchBox">
         <form id="searchFormEvent" onsubmit="event.preventDefault();">
           <div class="input-field col s12">
-            <input id="query" type="text" class="input" placeholder="Learn more about this place">
+            <input id="query" type="text" class="input" value={{this.destinationCity}}>
             <a class="waves-effect waves-white btn-flat" id='search-btn'><i class="material-icons left">search</i>search</a>
           </div>
         </form>
@@ -119,7 +119,10 @@ async defer></script>
                 </tr>
               </thead>
               <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
-            </table>
+              {{#each this.matches}}
+	<div> {{name}} {{age}} {{photo}} {{lang}} {{city}}</div>
+{{/each}}
+            </table >
           </span>
         </div>
       </div>
@@ -184,8 +187,8 @@ async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="apps.js"></script>
-<script type="text/javascript" src="events.js"></script>
+<script type="text/javascript" src="assets/javascript/apps.js"></script>
+<script type="text/javascript" src="assets/javascript/events.js"></script>
 <!-- <script type="text/javascript"  src="assets/javascript/wiki.js"></script> -->
 
 </html>
