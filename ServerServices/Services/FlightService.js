@@ -7,23 +7,24 @@ class FlightsService {
     }
 
     /**
-     * Pre-Condition: params must be an array.
+     * Pre-Condition: params must be an object.
      * 
-     * @param {Object} params 
+     * @param {Object} params {dest , home} where dest and home are cities
      *  Accepts an objects two properties, dest and home
      * @returns An Array of objects. Returns an empty array if there are no results.
      */
     async MakeAPICall(params) {
         try {
-            if (!Array.isArray(params)) throw "Invaild params";
-
+            if (typeof (params) !== "object") throw "Invaild params. Input must be an object";
+            console.log(params);
+            console.log(this.API_KEY);
             //get iataCode for city
             let arrivalAirport = await axios.get("http://aviation-edge.com/v2/public/autocomplete?key=" + this.API_KEY + "&city=" + params.dest);
 
             let departureAirport = await axios.get("http://aviation-edge.com/v2/public/autocomplete?key=" + this.API_KEY + "&city=" + params.home);
 
             //get timetable for flights
-            let flights = await axios.get(" http://aviation-edge.com/v2/public/timetable?key=" + this.API_KEY + "&iataCode=" + arrivalAirport.data.cities[0].codeIataCity + "&type=departure");
+            let flights = await axios.get(" http://aviation-edge.com/v2/public/timetable?key=" + this.API_KEY + "&iataCode=" + departureAirport.data.cities[0].codeIataCity + "&type=departure");
 
             let requestedFlights = [];
 
@@ -50,7 +51,7 @@ class FlightsService {
  * 
  */
 function CreateAPI(apikey) {
-    return new API(apikey);
+    return new FlightsService(apikey);
 }
 
 module.exports = CreateAPI; 

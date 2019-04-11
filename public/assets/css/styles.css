@@ -1,6 +1,22 @@
 body {
     background-color: purple;
+    background-image: url("../blue_globe.png");
+    background-repeat: no-repeat;
+    background-size: 200px;
+    background-position: 70%;
+    background-position-y: 5%;
+    
 }
+
+h1 {
+    font-size: 600%;
+    color:gold;
+    margin-left: 10%;
+    font-weight: bold;
+    font-family: 'Cinzel Decorative', cursive;
+
+}
+
 .footer {
     margin-top: 200px;
 }

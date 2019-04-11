@@ -11,15 +11,13 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-
 var db = require("./models");
-
 var app = express();
-
 var session = require("express-session");
 var passport = require("passport");
 var Auth0Strategy = require("passport-auth0");
 
+//Setup for authentication
 var sess = {
   secret: "testsecret",
   cookie: {},
@@ -34,9 +32,7 @@ var startegy = new Auth0Strategy({
   callbackURL: process.env.AUTH0_CALLBACK_URL || "http://localhost:8080/callback",
 }, (accessToken, refresToken, extraPrams, profile, done) => {
   return done(null, profile);
-}
-
-);
+});
 passport.use(startegy);
 
 var PORT = process.env.PORT || 8080;
@@ -78,6 +74,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+require("./routes/authRoutes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
