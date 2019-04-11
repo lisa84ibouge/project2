@@ -1,5 +1,5 @@
 body {
-    background-color: purple;
+    background-color: #800080;
     background-image: url("../blue_globe.png");
     background-repeat: no-repeat;
     background-size: 200px;
@@ -10,7 +10,7 @@ body {
 
 h1 {
     font-size: 600%;
-    color:gold;
+    color:#FFD700;
     margin-left: 10%;
     font-weight: bold;
     font-family: 'Cinzel Decorative', cursive;
