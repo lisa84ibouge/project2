@@ -41,6 +41,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+// var noMatch =[{notFound:'sorry no matches'}];
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
