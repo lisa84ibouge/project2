@@ -7,7 +7,7 @@ module.exports = function (app) {
     console.log(req.query);
     db.User.findAll({
       where: {
-        cityOne: req.query.cityOne
+        city: req.query.city
       }
     }).then(function (users) {
       console.log(users);
@@ -22,14 +22,14 @@ module.exports = function (app) {
     db.User.findAll({
       where: {
         [Op.or]: [{
-            city: req.body.city
+            city: req.body.cityTwo
           },
-          {
-            countryTwo: req.body.countryTwo
-          },
-          {
-            cityTwo: req.body.cityTwo
-          }
+       //   {
+       //     countryTwo: req.body.countryTwo
+      //    },
+      //    {
+        //    cityTwo: req.body.cityTwo
+       //   }
         ],
       },
   
@@ -39,7 +39,7 @@ module.exports = function (app) {
       // if there is a match, then do the for loop
       if (temp.length > 0) {
         for (var i = 0; i < temp.length; i++) {
-          if (temp[i].cityOne == req.body.cityOne) {
+          if (temp[i].city == req.body.city) {
             console.log('matching name:', temp[i].name, ': ', temp[i].city, 'city/country');
             // matching city is working. logging out matching city
           } else if (temp[i].countryTwo == req.body.countryTwo) {
@@ -52,6 +52,7 @@ module.exports = function (app) {
         }  
       };
     }).then(function () {
+      console.log(req.body)
       db.User.create({
         name: req.body.name,
         city: req.body.city,
@@ -61,11 +62,13 @@ module.exports = function (app) {
         age: req.body.age,
         lang: req.body.lang,
         secLang: req.body.secLang,
-        bio: req.body.bio
+        bio: req.body.bio,
+        email:req.body.email,
+        userName: req.body.username
       }).then(function () {
         console.log('temp here-----', temp.length)
         res.render("layouts/results.handlebars", {
-          destinationCity: req.body.city, 
+          destinationCity: req.body.cityTwo, 
           matches:temp
 
         })

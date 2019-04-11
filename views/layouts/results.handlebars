@@ -120,7 +120,7 @@ async defer></script>
               </thead>
               <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
               {{#each this.matches}}
-	<div> {{name}} {{age}} {{photo}} {{lang}} {{city}} {{cityTwo}} {{countryTwo}}</div>
+	<div> {{name}} {{age}} <div class="profilePic" style="background-size: 100%; width: 50px; height: 50px; background-image: url('{{photo}}')"></div> {{lang}} {{bio}} {{userName}} {{email}} {{cityTwo}} {{countryTwo}}</div>
 {{/each}}
             </table >
           </span>

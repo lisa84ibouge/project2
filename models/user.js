@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     // this field for city and country of origin
-    cityOne: {
+    city: {
       // country: {
       //   type: DataTypes.STRING,
       //   allowNull: false,
