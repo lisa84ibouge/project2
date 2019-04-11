@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JetSetMet</title>
+  <title>JetSetMet.</title>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
@@ -15,11 +15,26 @@
   <link href="https://fonts.googleapis.com/css?family=Bungee+Hairline" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
   <!--css linked-->
-  <link rel='stylesheet' href='assets/css/styles.css'> 
+  <link rel='stylesheet' href='/assets/css/styles.css'> 
   <!--Google Web API library-->
   <!--<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>-->
   <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM&libraries=places"></script>-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css?family=Cinzel|Exo|Nanum+Myeongjo|Philosopher" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel|Exo|Julius+Sans+One|Nanum+Myeongjo|Philosopher" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel|Exo|Julius+Sans+One|Nanum+Myeongjo|Philosopher|Syncopate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Forum|Rock+Salt" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Forum|Rock+Salt|Syncopate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Forum|Rock+Salt|Syncopate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Forum|Rock+Salt|Syncopate|Trirong" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Fahkwang|Forum|Rock+Salt|Syncopate|Trirong" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Fahkwang|Forum|Rock+Salt|Syncopate|Thasadith|Trirong" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Elsie+Swash+Caps|Fahkwang|Forum|Rock+Salt|Syncopate|Thasadith|Trirong" rel="stylesheet">
+
+
   <style>
       #map {
         height: 100%;
@@ -57,7 +72,7 @@ async defer></script>
     <!--logo row-->
     <div class="row">
       <div class="col s5.5">
-        <h1>JetSetFriends</h1>
+        <h1>Jet.Set.Met.</h1>
       </div>
     </div>
 
@@ -66,7 +81,7 @@ async defer></script>
       <div class="input-field col s12 z-depth-5" id="searchBox">
         <form id="searchFormEvent" onsubmit="event.preventDefault();">
           <div class="input-field col s12">
-            <input id="query" type="text" class="input" placeholder="Learn more about this place">
+            <input id="query" type="text" class="input" value={{this.destinationCity}}>
             <a class="waves-effect waves-white btn-flat" id='search-btn'><i class="material-icons left">search</i>search</a>
           </div>
         </form>
@@ -83,7 +98,7 @@ async defer></script>
           <div class="card-stacked">
             <div class="card-content" id="bandInfo"></div>
             <div class="card-action">
-              <a id="bandURL">Learn More about this country</a>
+              
             </div>
           </div>
         </div>
@@ -104,7 +119,10 @@ async defer></script>
                 </tr>
               </thead>
               <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
-            </table>
+              {{#each this.matches}}
+	<div> {{name}} {{age}} {{photo}} {{lang}} {{city}} {{cityTwo}} {{countryTwo}}</div>
+{{/each}}
+            </table >
           </span>
         </div>
       </div>
@@ -169,8 +187,8 @@ async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="apps.js"></script>
-<script type="text/javascript" src="events.js"></script>
+<script type="text/javascript" src="assets/javascript/apps.js"></script>
+<script type="text/javascript" src="assets/javascript/events.js"></script>
 <!-- <script type="text/javascript"  src="assets/javascript/wiki.js"></script> -->
 
 </html>
