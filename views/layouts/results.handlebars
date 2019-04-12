@@ -122,17 +122,26 @@
         <div class="card-panel z-depth-5">
           <span class="black-text" id="eventsGoHere">
             <!-- Event Table -->
-            <table>
-              <thead>
-                <tr>
 
+            <table>
+
+              <thead>
+
+
+                <tr>
                   <th>New Friends from this Area</th>
 
                 </tr>
               </thead>
               <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
               {{#each this.matches}}
-              <div> {{name}} {{age}} {{photo}} {{lang}} {{city}} {{cityTwo}} {{countryTwo}}</div>
+              <div>
+                <div>{{name}} {{age}} </div>
+                <div class="profilePic"
+                  style="background-size: 100%; width: 50px; height: 50px; display: inline-block; background-image: url('{{photo}}')">
+                </div> <span>{{lang}} {{bio}} {{city}} {{country}}</span>
+                <div>{{userName}} {{email}}</div>
+              </div>
               {{/each}}
             </table>
           </span>

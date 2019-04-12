@@ -16,6 +16,7 @@ var app = express();
 var session = require("express-session");
 var passport = require("passport");
 var Auth0Strategy = require("passport-auth0");
+var viewUser = require("./ServerServices/User");
 
 //Setup for authentication
 var sess = {
@@ -69,9 +70,11 @@ passport.deserializeUser(function (user, done) {
   done(null, user);
 });
 
+
 app.use(session(sess));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(viewUser());
 
 // Routes
 require("./routes/authRoutes")(app);

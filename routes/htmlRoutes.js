@@ -6,28 +6,28 @@ var dotenv = require("dotenv");
 var util = require("util");
 var url = require("url");
 
-var secured = require("../ServerServices/routeAuthorization");
+var protected = require("../ServerServices/routeAuthorization");
 
 dotenv.config();
 
 
 module.exports = function (app) {
-  app.get("/", secured(), function (req, resp) {
-    resp.sendFile(path.join(__dirname, "../public/html/questions.html"))
+  app.get("/", protected(), function (req, resp) {
+    resp.sendFile(path.join(__dirname, "../public/html/form.html"))
     // resp.render('results', { layout: 'default', template: 'results' });
   })
 
-  app.get('/questions', secured(), function (req, resp) {
+  app.get('/questions', protected(), function (req, resp) {
     resp.sendFile(path.join(__dirname, '../public/html/questions.html'))
   })
 
 
-  app.get("/survey", secured(), (req, resp) => {
+  app.get("/survey", protected(), (req, resp) => {
     resp.sendFile(path.join(__dirname, "../public/html/survey.html"));
   })
 
-  app.get("/form", secured(), (req, resp) => {
-    console.log(req.body);
+  app.get("/form", protected(), (req, resp) => {
+    console.log(resp.body);
     resp.sendFile(path.join(__dirname, "../public/html/form.html"));
   })
 

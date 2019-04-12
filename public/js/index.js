@@ -15,6 +15,7 @@ $(document).ready(function () {
         $("#user-age")
         .val()
         .trim()
+
       ),
       city: $("#user-city")
         .val()
@@ -40,6 +41,7 @@ $(document).ready(function () {
 /*
     $.post("/api/user", userInputs, function (data) {
       $(".card").show();
+
 
       var userInputName = $("<p>" + userInputs.name + "</p>");
       var userInputpic = $("#card-pic").attr("src", userInputs.photo);
@@ -74,6 +76,7 @@ $(document).ready(function () {
           "</p><button type=\"button\" class=\"close\" data-target=\"#" +
           i +
           'Panel" data-dismiss="alert"><span class="float-right"><i class="fa fa-remove"></i></span></button></div><p>From: ' +
+
           data[i].city +
           " </p><p>Country to visit: " + data[i].countryTwo + ' </p><p>City to visit: "' + data[i].cityTwo + '</p></div></div>'
         );
@@ -103,3 +106,6 @@ $(document).ready(function () {
     
   });
 });
+
+
+

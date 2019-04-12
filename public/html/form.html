@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--  <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
+    <!--  <link rel="stylesheet" type="text/css" media="screen" href="main.css"> -->
     <!-- Including Font Awesome Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Semantic UI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- CSS -->
@@ -16,10 +18,11 @@
     <!--JavaScript-->
     <script src="js/index.js"></script>
 </head>
+
 <body>
 
     <header>
-    <!-- NavBar -->
+        <!-- NavBar -->
         <div class="ui stackable secondary menu" id="menu">
             <a class="active item" href="index.html">
                 <p class="navItem">Home</p>
@@ -30,116 +33,116 @@
             <a class="item" href="contact.html">
                 <p class="navItem">Contact Us</p>
             </a>
-            <a class="item" href="login.html">
-                <p class="navItem">Login</p>
+            <a class="item" href="/logout">
+                <p class="navItem">Log Out</p>
             </a>
         </div>
-    <!-- NavBar End -->
+        <!-- NavBar End -->
     </header>
 
-            <br>
-            <br>
+    <br>
+    <br>
 
-<!--Form start-->
-<form id="form" action="/matches" method="POST">
-<h4 class="ui dividing header">Personal Information</h4>
-<div class="ui form">
-  <div class="three fields">
-    <div class="field">
-      <label>First Name:</label>
-      <input name="name" type="text" placeholder="First Name">
-    </div>
-    <div class="field">
-      <label>Last Name:</label>
-      <input name="lastName" type="text" placeholder="Last Name">
-    </div>
-    <div class="field">
-      <label>Picture:</label>
-      <input name="photo" type="text" placeholder="Personal Photo">
-    </div>
-  </div>
-  
-    <div class="three fields">
-        <div class="field">
-            <label>Age:</label>
-            <input name="age" type="number" placeholder="Age">
-        </div>
-        <div class="field">
-            <label>Gender:</label>
-            <select>
-                <option value="">Gender</option>
-                <option value="1">Male</option>
-                <option value="0">Female</option>
-            </select>
-        </div>
-        <div class="field">
-            <label>Primary Language:</label>
-            <input name="lang" type="text" placeholder="Language Spoken">
-        </div>
-    </div>
-
-    <div class="two fields">
-        <div class="field">
-            <label>City:</label>
-            <input name="city" type="text" placeholder="City">
-        </div>
-        <div class="field">
-            <label>Country:</label>
-            <input type="text" placeholder="Country">
-        </div>
-    </div>
-
-    <div class="field">
-        <label>Biography:</label>
-            <textarea></textarea>
-    </div>
-
-    <div class="two fields">
-        <div class="field">
-            <label>Username:</label>
-            <input type="text" placeholder="Username">
-        </div>
-        <div class="field">
-            <label>Email Address:</label>
-            <input type="text" placeholder="email@address.com">
-        </div>
-    </div>
-    </div>
-
-    </div>
-      
-  </div>
-
-  <h4 class="ui dividing header">Desired Destination</h4>
-  <div class="ui form">
-    <div class="field">
-      <div class="two fields">
-        <div class="required field">
-            <label>City Two:</label>
-          <input name="cityTwo" type="text" name="City" placeholder="City">
-        </div>
-        <div class="required field">
-            <label>Country:</label>
-          <input name="countryTwo" type="text" name="Country" placeholder="Country">
-        </div>
-    </div>
-        <!--optional-->
-        <div class="two fields">
-            <div class="field">
-                <label>City:</label>
-                  <input type="text" name="City" placeholder="City">
+    <!--Form start-->
+    <form id="form" action="/matches" method="POST">
+        <h4 class="ui dividing header">Personal Information</h4>
+        <div class="ui form">
+            <div class="three fields">
+                <div class="field">
+                    <label>First Name:</label>
+                    <input name="name" type="text" placeholder="First Name">
                 </div>
+                <div class="field">
+                    <label>Last Name:</label>
+                    <input name="lastName" type="text" placeholder="Last Name">
+                </div>
+                <div class="field">
+                    <label>Picture:</label>
+                    <input name="photo" type="text" placeholder="Personal Photo">
+                </div>
+            </div>
+
+            <div class="three fields">
+                <div class="field">
+                    <label>Age:</label>
+                    <input name="age" type="number" placeholder="Age">
+                </div>
+                <div class="field">
+                    <label>Gender:</label>
+                    <select>
+                        <option value="">Gender</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Primary Language:</label>
+                    <input name="lang" type="text" placeholder="Language Spoken">
+                </div>
+            </div>
+
+            <div class="two fields">
+                <div class="field">
+                    <label>City:</label>
+                    <input name="city" type="text" placeholder="City">
+                </div>
+                <div class="field">
+                    <label>Country:</label>
+                    <input type="text" placeholder="Country">
+                </div>
+            </div>
+
             <div class="field">
-                <label>Country:</label>
-                  <input type="text" name="Country" placeholder="Country">
+                <label>Biography:</label>
+                <textarea name="bio"></textarea>
+            </div>
+
+            <div class="two fields">
+                <div class="field">
+                    <label>Username:</label>
+                    <input name="username" type="text" placeholder="Username">
+                </div>
+                <div class="field">
+                    <label>Email Address:</label>
+                    <input name="email" type="text" placeholder="email@address.com">
+                </div>
             </div>
         </div>
-        <input type="submit" id="submit" class="ui submit button">Submit</input>
-    <!--</form>-->
-    </div>
 
-    </div>
-</form>
+        </div>
+
+        </div>
+
+        <h4 class="ui dividing header">Desired Destination</h4>
+        <div class="ui form">
+            <div class="field">
+                <div class="two fields">
+                    <div class="required field">
+                        <label>City Two:</label>
+                        <input name="cityTwo" type="text" name="City" placeholder="City">
+                    </div>
+                    <div class="required field">
+                        <label>Country:</label>
+                        <input name="countryTwo" type="text" name="Country" placeholder="Country">
+                    </div>
+                </div>
+                <!--optional-->
+                <div class="two fields">
+                    <div class="field">
+                        <label>City:</label>
+                        <input type="text" name="City" placeholder="City">
+                    </div>
+                    <div class="field">
+                        <label>Country:</label>
+                        <input type="text" name="Country" placeholder="Country">
+                    </div>
+                </div>
+                <input type="submit" id="submit" class="ui submit button">Submit</input>
+                <!--</form>-->
+            </div>
+
+        </div>
+    </form>
 
     <!-- <div class="field"></div>
   </div>
@@ -150,24 +153,25 @@
 </form> -->
 
 
-<br>
-<br>  
+    <br>
+    <br>
     <!-- footer -->
     <div class="ui inverted vertical footer segment">
-            <div class="ui center aligned container">
-                <div class="seven wide column">
-                        <i class="fas fa-globe-americas"></i>   <i class="fas fa-suitcase"></i>  <i class="fas fa-plane"></i>
-                </div>
-                <div class="ui horizontal inverted small divided link list">
-                    <a class="item" href="index.html">Site Map</a>
-                    <a class="item" href="contact.html">Contact Us</a>
-                    <a class="item" href="#">Terms and Conditions</a>
-                    <a class="item" href="#">Privacy Policy</a>
-                    <p>Copyright 2019 - All rights reserved &copy;</p>
-                </div>
+        <div class="ui center aligned container">
+            <div class="seven wide column">
+                <i class="fas fa-globe-americas"></i> <i class="fas fa-suitcase"></i> <i class="fas fa-plane"></i>
             </div>
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="index.html">Site Map</a>
+                <a class="item" href="contact.html">Contact Us</a>
+                <a class="item" href="#">Terms and Conditions</a>
+                <a class="item" href="#">Privacy Policy</a>
+                <p>Copyright 2019 - All rights reserved &copy;</p>
+            </div>
+        </div>
     </div>
     <!-- end footer -->
 
 </body>
+
 </html>
