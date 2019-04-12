@@ -13,8 +13,10 @@ dotenv.config();
 
 module.exports = function (app) {
   app.get("/", protected(), function (req, resp) {
-    resp.sendFile(path.join(__dirname, "../public/html/form.html"))
-    // resp.render('results', { layout: 'default', template: 'results' });
+    console.log("form")
+    console.log(req.user);
+    //resp.sendFile(path.join(__dirname, "../public/html/form.html"))
+    resp.render('layouts/main', { data: req.user });
   })
 
   app.get('/questions', protected(), function (req, resp) {
