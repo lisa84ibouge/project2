@@ -121,7 +121,7 @@ async defer></script>
               <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
               {{#each this.matches}}
               <tr><td>
-	<div> <div><b>{{name}} {{age}}, {{lang}}</b> </div><div class="profilePic" style="background-size: 100%; width: 100px; height: 100px; display: inline-block; background-image: url('{{photo}}')"></div><div><span style="vertical-align: top"> {{bio}} {{city}} {{country}}</span></div><div>{{userName}} {{email}}</div></div>
+	<div> <div><b>{{name}} {{age}}, {{lang}}</b> </div><div class="profilePic" style="background-size: 100%; width: 100px; height: 100px; display: inline-block; background-image: url('{{photo}}')"></div><span style="vertical-align: top"> {{bio}} {{city}} {{country}}</span><div>{{userName}} {{email}}</div></div>
 {{/each}}</td>
 </tr>
             </table >
@@ -161,7 +161,9 @@ async defer></script>
 
 
     <div class="col s6 m6" id='co1'>
-        <div class="card-panel z-depth-5" style="overflow-y: scroll; height:450px;">
+      <th></th>
+        <div class="card-panel z-depth-5" style="overflow-y: scroll; height:450px;"><div style="text-align: center; font-weight: bold; font-size: 150%;">Top 10 Places to Visit</div>
+          
           <div class="card-content">
             <div class='row' >
               <ul id='placeDetails'></ul>
