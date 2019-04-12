@@ -171,7 +171,36 @@
 
                 </tr>
               </thead>
-              <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
+              <tbody id="appendtome" class="striped" class="responsive-table">
+
+              </tbody>
+              {{#each this.flights}}
+              <div>
+                <div>
+                  <div>
+                    <span>
+                      <span>{{airline.name}}</span>
+                      <span> Flight {{flight.iataNumber}}</span>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <span> Departure {{departure.iataCode}}</span>
+                      <span>{{departure.scheduledTime}}</span>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <span>Arrival {{arrival.iataCode}} </span>
+                      <span>{{arrival.scheduledTime}}</span>
+                    </span>
+                  </div>
+
+                </div>
+
+              </div>
+              <br>
+              {{/each}}
             </table>
           </span>
         </div>
