@@ -106,8 +106,8 @@ async defer></script>
     </div>
     <!--this row contains the events div and the youtube div-->
     <div class="row">
-      <div class="col s6 m6" id="col1">
-        <div class="card-panel z-depth-5">
+      <div class="col s6 m6" id="col1" >
+        <div class="card-panel z-depth-5" style="overflow-y: scroll; height: 450px">
           <span class="black-text" id="eventsGoHere">
             <!-- Event Table -->
             
@@ -116,15 +116,14 @@ async defer></script>
               <thead>
                 
                 
-                  <tr>
-                  <th>New Friends from this Area</th>
-                  
-                </tr>
+                  <th><b><div style="text-align: center; font-size: 150%;">New Friends from this Area</div></b></th>
               </thead>
               <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
               {{#each this.matches}}
-	<div> <div>{{name}} {{age}} </div><div class="profilePic" style="background-size: 100%; width: 50px; height: 50px; display: inline-block; background-image: url('{{photo}}')"></div> <span>{{lang}} {{bio}}  {{city}} {{country}}</span><div>{{userName}} {{email}}</div></div>
-{{/each}}
+              <tr><td>
+	<div> <div><b>{{name}} {{age}}, {{lang}}</b> </div><div class="profilePic" style="background-size: 100%; width: 100px; height: 100px; display: inline-block; background-image: url('{{photo}}')"></div><div><span style="vertical-align: top"> {{bio}} {{city}} {{country}}</span></div><div>{{userName}} {{email}}</div></div>
+{{/each}}</td>
+</tr>
             </table >
           </span>
         </div>
