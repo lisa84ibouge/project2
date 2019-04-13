@@ -57,7 +57,7 @@ module.exports = function (app) {
             console.log('matches')
           }
         }
-      };
+      }
     }).then(function () {
       console.log(req.body)
       db.User.create({
