@@ -2,7 +2,7 @@ var db = require("../models");
 var protected = require("../ServerServices/routeAuthorization");
 var Op = db.Sequelize.Op;
 require("dotenv").config();
-var flights = require("../ServerServices/Services/FlightService")(process.env.AE_SERCRET);
+var flights = require("../ServerServices/Services/FlightService")(process.env.AE_SECRET);
 
 
 module.exports = function (app) {
@@ -10,7 +10,7 @@ module.exports = function (app) {
 
   app.get("/api/users", protected(), function (req, res) {
     //console.log(flights.makeApiCall({ dest: "Seattle", home: "Portland" }));
-    console.log("user route");
+
     console.log(req);
     // req.query is the result of the query
     console.log(req.query);
@@ -73,13 +73,20 @@ module.exports = function (app) {
         email: req.body.email,
         userName: req.body.username
       }).then(function () {
-        var destFlights = flights.MakeAPICall({ dest: req.body.cityTwo, home: req.body.city });
-        console.log('temp here-----', temp.length)
-        res.render("layouts/results.handlebars", {
-          destinationCity: req.body.cityTwo,
-          matches: temp,
-          flights: destFlights
-        })
+        var destFlights
+        flights.MakeAPICall({ dest: req.body.cityTwo, home: req.body.city }).then(function (result) {
+          destFlights = result;
+          console.log("dest");
+          console.log(destFlights);
+          console.log(temp);
+          res.render("layouts/results.handlebars", {
+            destinationCity: req.body.cityTwo,
+            matches: temp,
+            flights: destFlights
+          })
+        });
+        //console.log('temp here-----', temp.length)
+
         //   res.send(temp)
       })
     })

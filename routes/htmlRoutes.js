@@ -12,11 +12,10 @@ dotenv.config();
 
 
 module.exports = function (app) {
-  app.get("/", protected(), function (req, resp) {
-    console.log("form")
-    console.log(req.user);
-    //resp.sendFile(path.join(__dirname, "../public/html/form.html"))
-    resp.render('layouts/main', { data: req.user });
+  app.get("/form", protected(), function (req, resp) {
+
+
+    resp.render('layouts/form', { data: req.user });
   })
 
   app.get('/questions', protected(), function (req, resp) {
@@ -24,20 +23,9 @@ module.exports = function (app) {
   })
 
 
-  app.get("/survey", protected(), (req, resp) => {
-    resp.sendFile(path.join(__dirname, "../public/html/survey.html"));
+  app.get("/", (req, resp) => {
+    resp.sendFile(path.join(__dirname, "../public/html/login.html"));
   })
-
-  app.get("/form", protected(), (req, resp) => {
-    console.log(resp.body);
-    resp.sendFile(path.join(__dirname, "../public/html/form.html"));
-  })
-
-
-
-
-
-
 
 
 

@@ -1,3 +1,3 @@
-drop database if exists user_db;
-create database user_db;
-use user_db;
+drop database if exists users_db;
+create database users_db;
+use users_db;
