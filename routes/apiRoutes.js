@@ -31,12 +31,7 @@ module.exports = function (app) {
         [Op.or]: [{
           city: req.body.cityTwo
         },
-          //   {
-          //     countryTwo: req.body.countryTwo
-          //    },
-          //    {
-          //    cityTwo: req.body.cityTwo
-          //   }
+
         ],
       },
 
