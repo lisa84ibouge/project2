@@ -40,48 +40,6 @@
         <!-- NavBar End -->
     </header>
 
-            <br>
-            <br>
-<h1>JetSetMet</h1>
-<br>
-<br>
-<!--Form start-->
-<form id="form" action="/matches" method="POST">
-<h4 class="ui dividing header">Personal Information</h4>
-<div class="ui form">
-  <div class="three fields">
-    <div class="field">
-      <label>First Name:</label>
-      <input name="name" type="text" placeholder="First Name">
-    </div>
-    <div class="field">
-      <label>Last Name:</label>
-      <input name="lastName" type="text" placeholder="Last Name">
-    </div>
-    <div class="field">
-      <label>Picture:</label>
-      <input name="photo" type="text" placeholder="Personal Photo">
-    </div>
-  </div>
-  
-    <div class="three fields">
-        <div class="field">
-            <label>Age:</label>
-            <input name="age" type="number" placeholder="Age">
-        </div>
-        <div class="field">
-            <label>Gender:</label>
-            <select>
-                <option value="">Gender</option>
-                <option value="1">Male</option>
-                <option value="0">Female</option>
-            </select>
-        </div>
-        <div class="field">
-            <label>Primary Language:</label>
-            <input name="lang" type="text" placeholder="Language Spoken">
-        </div>
-    </div>
     <br>
     <br>
 
@@ -142,11 +100,11 @@
             <div class="two fields">
                 <div class="field">
                     <label>Username:</label>
-                    <input name="username" type="text" placeholder="Username">
+                    <input name="username" type="text" value={{data.nickname}}>
                 </div>
                 <div class="field">
                     <label>Email Address:</label>
-                    <input name="email" type="text" placeholder="email@address.com">
+                    <input name="email" type="text" value={{data.displayName}}>
                 </div>
             </div>
         </div>
@@ -154,6 +112,7 @@
         </div>
 
         </div>
+        rs
 
         <h4 class="ui dividing header">Desired Destination</h4>
         <div class="ui form">
@@ -182,10 +141,6 @@
                 <input type="submit" id="submit" class="ui submit button">Submit</input>
                 <!--</form>-->
             </div>
-        </div>
-        <input type="submit" id="submit" class="ui submit button"></input>
-    <!--</form>-->
-    </div>
 
         </div>
     </form>

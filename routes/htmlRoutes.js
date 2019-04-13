@@ -1,13 +1,33 @@
 var db = require("../models");
 var path = require("path");
+var express = require("express");
+var passport = require("passport");
+var dotenv = require("dotenv");
+var util = require("util");
+var url = require("url");
 
-module.exports = function(app) {
-  app.get("/", function(req, res) {
-   res.sendFile(path.join(__dirname, "../public/html/form.html"));
- 
-  });
+var protected = require("../ServerServices/routeAuthorization");
 
-  app.get("/questions", function(req, resp) {
-    resp.sendFile(path.join(__dirname, "../public/html/questions.html"));
-  });
-};
+dotenv.config();
+
+
+module.exports = function (app) {
+  app.get("/form", protected(), function (req, resp) {
+
+
+    resp.render('layouts/form', { data: req.user });
+  })
+
+  app.get('/questions', protected(), function (req, resp) {
+    resp.sendFile(path.join(__dirname, '../public/html/questions.html'))
+  })
+
+
+  app.get("/", (req, resp) => {
+    resp.sendFile(path.join(__dirname, "../public/html/login.html"));
+  })
+
+
+
+}
+

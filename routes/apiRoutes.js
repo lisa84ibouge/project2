@@ -1,9 +1,18 @@
 var db = require("../models");
+var protected = require("../ServerServices/routeAuthorization");
 var Op = db.Sequelize.Op;
+require("dotenv").config();
+var flights = require("../ServerServices/Services/FlightService")(process.env.AE_SECRET);
+
 
 module.exports = function (app) {
-  app.get("/api/users", function (req, res) {
-    console.log(req.body, "req body?");
+  // read the info at this path
+
+  app.get("/api/users", protected(), function (req, res) {
+    //console.log(flights.makeApiCall({ dest: "Seattle", home: "Portland" }));
+
+    console.log(req);
+    // req.query is the result of the query
     console.log(req.query);
     db.User.findAll({
       where: {
@@ -11,28 +20,26 @@ module.exports = function (app) {
       }
     }).then(function (users) {
       console.log(users);
-      res.json(users);
-    });
-  });
-
+    })
+  })
   // create
-  app.post("/matches", function (req, res) {
+  app.post("/matches", protected(), function (req, res) {
     let temp;
- 
+
     db.User.findAll({
       where: {
         [Op.or]: [{
-            city: req.body.cityTwo
-          },
-       //   {
-       //     countryTwo: req.body.countryTwo
-      //    },
-      //    {
-        //    cityTwo: req.body.cityTwo
-       //   }
+          city: req.body.cityTwo
+        },
+          //   {
+          //     countryTwo: req.body.countryTwo
+          //    },
+          //    {
+          //    cityTwo: req.body.cityTwo
+          //   }
         ],
       },
-  
+
     }).then(function (matchingUsers) {
       temp = matchingUsers;
       console.log('here ---->', temp.length)
@@ -49,8 +56,8 @@ module.exports = function (app) {
           } else {
             console.log('matches')
           }
-        }  
-      };
+        }
+      }
     }).then(function () {
       console.log(req.body)
       db.User.create({
@@ -63,17 +70,27 @@ module.exports = function (app) {
         lang: req.body.lang,
         secLang: req.body.secLang,
         bio: req.body.bio,
-        email:req.body.email,
+        email: req.body.email,
         userName: req.body.username
       }).then(function () {
-        console.log('temp here-----', temp.length)
-        res.render("layouts/results.handlebars", {
-          destinationCity: req.body.cityTwo, 
-          matches:temp
+        var destFlights
+        flights.MakeAPICall({ dest: req.body.cityTwo, home: req.body.city }).then(function (result) {
+          destFlights = result;
+          console.log("dest");
+          console.log(destFlights);
+          console.log(temp);
+          res.render("layouts/results.handlebars", {
+            destinationCity: req.body.cityTwo,
+            matches: temp,
+            flights: destFlights
+          })
+        });
+        //console.log('temp here-----', temp.length)
 
-        })
         //   res.send(temp)
       })
     })
-  });
-};
+  })
+
+}
+

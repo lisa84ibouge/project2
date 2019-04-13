@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JetSetMet.</title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!--Icons-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Google Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Hairline" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+  <!--css linked-->
+  <link rel='stylesheet' href='assets/css/styles.css'> 
+  <!--Google Web API library-->
+  <!--<script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>-->
+  <!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM&libraries=places"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css?family=Cinzel|Exo|Nanum+Myeongjo|Philosopher" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel|Exo|Julius+Sans+One|Nanum+Myeongjo|Philosopher" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel|Exo|Julius+Sans+One|Nanum+Myeongjo|Philosopher|Syncopate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Forum|Rock+Salt" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Forum|Rock+Salt|Syncopate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Forum|Rock+Salt|Syncopate" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Forum|Rock+Salt|Syncopate|Trirong" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Fahkwang|Forum|Rock+Salt|Syncopate|Trirong" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Fahkwang|Forum|Rock+Salt|Syncopate|Thasadith|Trirong" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Elsie+Swash+Caps|Fahkwang|Forum|Rock+Salt|Syncopate|Thasadith|Trirong" rel="stylesheet">
+
+
+  <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+<script>
+
+      var map;
+            function initMap() {
+               map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+              });
+            }
+      
+     // window.initMap = initMap;
+      
+      
+      </script>
+      
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvaMUPWVWbf-IfNSQxrrcoYaQ7TpVrSVM&callback=initMap&libraries=places"
+async defer></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <!--logo row-->
+    <div class="row">
+      <div class="col s5.5">
+        <h1>Jet.Set.Met.</h1>
+      </div>
+    </div>
+
+    <!--User input-->
+    <div class="row">
+      <div class="input-field col s12 z-depth-5" id="searchBox">
+        <form id="searchFormEvent" onsubmit="event.preventDefault();">
+          <div class="input-field col s12">
+            <input id="query" type="text" class="input" placeholder="Learn more about this place">
+            <a class="waves-effect waves-white btn-flat" id='search-btn'><i class="material-icons left">search</i>search</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!--Wikipedia Travel Card-->
+    <div class="row">
+      <div class="col s12 ">
+        <div class="card horizontal z-depth-5" id="entire">
+          <div class="card-image" id="bandPic">
+            <img src="">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content" id="bandInfo"></div>
+            <div class="card-action">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--this row contains the events div and the youtube div-->
+    <div class="row">
+      <div class="col s6 m6" id="col1">
+        <div class="card-panel z-depth-5">
+          <span class="black-text" id="eventsGoHere">
+            <!-- Event Table -->
+            <table>
+              <thead>
+                <tr>
+                  
+                  <th>New Friends from this Area</th>
+                  
+                </tr>
+              </thead>
+              <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
+            </table>
+          </span>
+        </div>
+      </div>
+
+      <div class="col s6 m6" id='col2'>
+        <div class="card-panel z-depth-5" style="overflow-y: scroll; height:450px;">
+          <div class="card-content" id="map">
+            <div class='row' >
+              <ul id='results'></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6 m6" id="col1">
+          <div class="card-panel z-depth-5">
+            <span class="black-text" id="eventsGoHere">
+              <!-- Event Table -->
+              <table>
+                <thead>
+                  <tr>
+                      <th>Flights to this Location</th>
+                  
+                    </tr>
+                  </thead>
+                  <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
+                </table>
+              </span>
+            </div>
+          </div>
+
+
+
+    <div class="col s6 m6" id='co1'>
+        <div class="card-panel z-depth-5" style="overflow-y: scroll; height:450px;">
+          <div class="card-content">
+            <div class='row' >
+              <ul id='placeDetails'></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <footer class="page-footer">
+         <div class="footer-copyright">
+          <div class="container">
+          © 2019 Copyright by Jetsetfriend
+          </div>
+        </div>
+      </footer>-->
+
+<div id="mapContainer">
+
+</div>
+
+
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="apps.js"></script>
+<script type="text/javascript" src="events.js"></script>
+<!-- <script type="text/javascript"  src="assets/javascript/wiki.js"></script> -->
+
+</html>

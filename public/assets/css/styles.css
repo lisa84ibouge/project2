@@ -50,9 +50,15 @@ margin-right: 400px;
     margin-top: 100px;
 }
 .item1 {
-    margin-left: 200px
+    margin-left: 200px;
 }
 #bandInfo {
     display: block;
     float: left;
+}
+
+#back-img{
+    background-image: url("./assets/architecture-building-exterior-castle-1654748.jpg");
+    background-color: black;
+    height: 50%;
 }
