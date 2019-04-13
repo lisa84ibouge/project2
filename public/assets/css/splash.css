@@ -1,0 +1,12 @@
+#back-img {
+    background-image: url("../architecture-building-exterior-castle-1654748.jpg");
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+  }
+
+  
