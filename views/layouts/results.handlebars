@@ -90,14 +90,17 @@ async defer></script>
 
     <!--Wikipedia Travel Card-->
     <div class="row">
-      <div class="col s12 ">
+      <div class="col s6 m6" id="col1">
         <div class="card horizontal z-depth-5" id="entire">
-          <div class="card-image" id="bandPic">
+          <div class="card-image" style="vertical-align: top; display:in-line block; float: left width: 50%;" id="bandPic">
             <img src="">
-          </div>
+        
+          <div class="col s6 m6" id="col2">
           <div class="card-stacked">
-            <div class="card-content" id="bandInfo"></div>
+            <span class="card-content" style="vertical-align: top; width: 50%;" id="bandInfo"></span>
             <div class="card-action">
+
+
               
             </div>
           </div>
@@ -121,7 +124,7 @@ async defer></script>
               <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
               {{#each this.matches}}
               <tr><td>
-	<div> <div><b>{{name}} {{age}}, {{lang}}</b> </div><div class="profilePic" style="background-size: 100%; width: 100px; height: 100px; display: inline-block; background-image: url('{{photo}}')"></div><span style="vertical-align: top"> {{bio}} {{city}} {{country}}</span><div>{{userName}} {{email}}</div></div>
+	<div> <div><b>{{name}} {{age}}, {{lang}}</b> </div><div class="profilePic" style="background-size: 100%; width: 100px; height: 100px; display: block; float: left; background-image: url('{{photo}}')"></div><span style="vertical-align: top;"> {{bio}} {{city}} {{country}}</span><br><div>{{userName}} {{email}}</div></div></div>
 {{/each}}</td>
 </tr>
             </table >
