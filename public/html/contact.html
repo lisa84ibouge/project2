@@ -9,38 +9,39 @@
     <!-- Site Properties -->
     <title>Contact Us</title>
     <!-- Including Font Awesome Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Semantic UI -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <!-- CSS -->
     <link href="/styles/styles.css" type="text/css" rel="stylesheet">
     <!-- JavaScript -->
     <script src="events.js"></script>
-
+    <!-- ajax/jQuery cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="content">
-    <header>
-    <!-- NavBar -->
-        <div class="ui stackable secondary menu" id="menu">
-            <a class="active item" href="index.html">
-                <p class="navItem">Home</p>
-            </a>
-            <a class="item" href="form.html">
-                <p class="navItem">Register</p>
-            </a>
-            <a class="item" href="contact.html">
-                <p class="navItem">Contact Us</p>
-            </a>
-            <a class="item" href="login.html">
-                <p class="navItem">Login</p>
-            </a>
-        </div>
-    <!-- NavBar End -->
-    </header>
-
-        <!--FIXME: Hook up an onclick event for submitting this somewhere? Not functional as it stands now-->
+        <header>
+            <!-- NavBar -->
+            <div class="ui stackable secondary menu" id="menu">
+                <a class="active item" href="index.html">
+                    <p class="navItem">Home</p>
+                </a>
+                <a class="item" href="form.html">
+                    <p class="navItem">Register</p>
+                </a>
+                <a class="item" href="contact.html">
+                    <p class="navItem">Contact Us</p>
+                </a>
+                <a class="item" href="login.html">
+                    <p class="navItem">Login</p>
+                </a>
+            </div>
+            <!-- NavBar End -->
+        </header>
+        <!--add a div class content for sticky footer-->
         <!-- Main Page Content -->
         <div class="ui container">
             <div class="ui middle aligned center aligned grid">
@@ -53,65 +54,77 @@
             </div>
             <!--Forms that hold Name, Email, Subject, and Message-->
             <div class="ui form">
-                <div class="two fields">
-                    <div class="field">
-                        <label>First Name:</label>
-                        <input type="text" placeholder="First Name">
-                    </div>
-                    <div class="field">
-                        <label>Last Name:</label>
-                        <input type="text" placeholder="Last Name">
-                    </div>
-                </div>
-            </div>
-            <div class="ui form">
                 <div class="field">
                     <label>Email Address:</label>
-                    <input type="text" placeholder="Your Email Address">
+                    <input type="text" id="email" placeholder="Your Email Address">
                 </div>
             </div>
             <br>
             <div class="ui form">
                 <div class="field">
                     <label>Subject:</label>
-                    <input type="text" placeholder="Subject">
+                    <input type="text" id="subject" placeholder="Subject">
                 </div>
             </div>
             <br>
             <div class="ui form">
                 <div class="field">
                     <label>Message:</label>
-                    <textarea placeholder="We love your product!"></textarea>
+                    <textarea placeholder="We love your product!" id="message"></textarea>
                 </div>
-                <button class="ui button" type="send">Submit</button>
+                <button class="ui button" id="submit" type="send">Submit</button>
             </div>
         </div>
-
     </div>
     <br>
     <br>
     <br>
-</div>
-
+    </div>
     <!-- footer -->
     <div class="ui inverted vertical footer segment">
-            <div class="ui center aligned container">
-                <div class="seven wide column">
-                        <i class="fas fa-globe-americas"></i>   <i class="fas fa-suitcase"></i>  <i class="fas fa-plane"></i>
-                </div>
-                <div class="ui horizontal inverted small divided link list">
-                    <a class="item" href="index.html">Site Map</a>
-                    <a class="item" href="contact.html">Contact Us</a>
-                    <a class="item" href="#">Terms and Conditions</a>
-                    <a class="item" href="#">Privacy Policy</a>
-                    <p>Copyright 2019 - All rights reserved &copy;</p>
-                </div>
+        <div class="ui center aligned container">
+            <div class="seven wide column">
+                <i class="fas fa-globe-americas"></i> <i class="fas fa-suitcase"></i> <i class="fas fa-plane"></i>
             </div>
+            <div class="ui horizontal inverted small divided link list">
+                <a class="item" href="index.html">Site Map</a>
+                <a class="item" href="contact.html">Contact Us</a>
+                <a class="item" href="#">Terms and Conditions</a>
+                <a class="item" href="#">Privacy Policy</a>
+                <p>Copyright 2019 - All rights reserved &copy;</p>
+            </div>
+        </div>
     </div>
     <!-- end footer -->
-
-    <!-- ajax/jQuery cdn -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        //need to make an app.post in api routes with a new page called contact and the req.body
+        //also need to put this other commented out information in still
+        // var nodemailer = require('nodemailer');
+        // var transporter = nodemailer.createTransport({
+        //   service: 'gmail',
+        //   auth: {
+        //     user: 'JetSetMet1@gmail.com',
+        //     pass: '$GetFound1'
+        //   }
+        // });
+        $('#submit').on("click", function (event) {
+            event.preventDefault()
+            var mailOptions = {
+                from: $('#email').val().trim(),
+                to: 'JetSetMet1@gmail.com',
+                subject: $('#subject').val().trim(),
+                text: $('#message').val().trim()
+            };
+            console.log(mailOptions);
+        });
+// transporter.sendMail(mailOptions, function(error, info){
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log('Email sent: ' + info.response);
+//   }
+// });
+    </script>
 </body>
 
 </html>
