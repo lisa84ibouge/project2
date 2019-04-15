@@ -102,13 +102,13 @@
 
     <!--Wikipedia Travel Card-->
     <div class="row">
-      <div class="col s12 ">
+    <div class="col s12 ">
         <div class="card horizontal z-depth-5" id="entire">
           <div class="card-image" id="bandPic">
-            <img src="">
+            <img style="float: left;" src="">
           </div>
           <div class="card-stacked">
-            <div class="card-content" id="bandInfo"></div>
+            <div class="card-content" style="float: left;" id="bandInfo"></div>
             <div class="card-action">
 
             </div>
@@ -116,6 +116,7 @@
         </div>
       </div>
     </div>
+
     <!--this row contains the events div and the youtube div-->
     <div class="row">
       <div class="col s6 m6" id="col1">
@@ -136,7 +137,7 @@
               <tbody id="appendtome" class="striped" class="responsive-table"></tbody>
               {{#each this.matches}}
               <tr><td>
-	<div> <div><b>{{name}} {{age}}, {{lang}}</b> </div><div class="profilePic" style="background-size: 100%; width: 100px; height: 100px; display: inline-block; background-image: url('{{photo}}')"></div><span style="vertical-align: top"> {{bio}} {{city}} {{country}}</span><div>{{userName}} {{email}}</div></div>
+	<div> <div><b>{{name}} {{age}}, {{lang}}</b> </div><div class="profilePic" style="background-size: 100%; width: 100px; height: 100px; display: block; float: left; background-image: url('{{photo}}')"></div><span style="vertical-align: top;"> {{bio}} {{city}} {{country}}</span><br><div>{{userName}} {{email}}</div></div></div>
 {{/each}}</td>
 </tr>
             </table >
