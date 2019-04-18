@@ -8,8 +8,27 @@ var flights = require("../ServerServices/Services/FlightService")(process.env.AE
 module.exports = function (app) {
   // read the info at this path
 
+  app.post("/api/flights", (req, resp) => {
+    console.log(req.body);
+    console.log(req.body.home);
+    console.log(req.body.dest);
+    // var destin = req.params.destination;
+    // var hom = req.params.home;
+    var requeted;
+    flights.MakeAPICall(req.body).then(function (data) {
+      requested = data;
+      // resp.render("partials/flights", {
+      //   layout: false,
+      //   flights: requested
+      // });
+      resp.json(requested);
+    })
+
+
+  })
+
   app.get("/api/users", protected(), function (req, res) {
-    //console.log(flights.makeApiCall({ dest: "Seattle", home: "Portland" }));
+
 
     console.log(req);
     // req.query is the result of the query
@@ -22,6 +41,8 @@ module.exports = function (app) {
       console.log(users);
     })
   })
+
+
   // create
   app.post("/matches", protected(), function (req, res) {
     let temp;
@@ -71,9 +92,6 @@ module.exports = function (app) {
         var destFlights
         flights.MakeAPICall({ dest: req.body.cityTwo, home: req.body.city }).then(function (result) {
           destFlights = result;
-          console.log("dest");
-          console.log(destFlights);
-          console.log(temp);
           res.render("layouts/results.handlebars", {
             destinationCity: req.body.cityTwo,
             matches: temp,

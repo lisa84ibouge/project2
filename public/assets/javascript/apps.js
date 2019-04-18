@@ -11,7 +11,6 @@ $(function () {
 
 });
 
-
 function search() {
   //add Delbert's function to call AJAX call to load flight API with key 
   //clear results
@@ -21,11 +20,15 @@ function search() {
   //Get Form Input
   q = $('#query').val();
 
-  // TODO 
-  // getRelatedArtists()
+  $.post("/api/flights", { dest: q, home: "Seattle" }, (err, data) => {
+    if (err) console.log(err);
+    console.log("post")
+    console.log(data);
 
-  //  getVideos(q);
 
+  }).then((data) => {
+    console.log(data);
+  })
   wikiImages(q);
   //wikiSearchContent(q);
   googlePlaceSearch(q);
@@ -54,7 +57,7 @@ function getVideos(query) {
 
       // TODO - clear previous results
 
-      console.log(data);
+      //console.log(data);
 
       $.each(data.items, function (i, item) {
 

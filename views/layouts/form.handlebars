@@ -21,24 +21,7 @@
 
 <body>
 
-    <header>
-        <!-- NavBar -->
-        <div class="ui stackable secondary menu" id="menu">
-            <a class="active item" href="index.html">
-                <p class="navItem">Home</p>
-            </a>
-            <a class="item" href="form.html">
-                <p class="navItem">Register</p>
-            </a>
-            <a class="item" href="/contact">
-                <p class="navItem">Contact Us</p>
-            </a>
-            <a class="item" href="/logout">
-                <p class="navItem">Log Out</p>
-            </a>
-        </div>
-        <!-- NavBar End -->
-    </header>
+    {{> header}}
 
     <br>
     <br>
@@ -156,23 +139,8 @@
 
     <br>
     <br>
-    <!-- footer -->
-    <div class="ui inverted vertical footer segment">
-        <div class="ui center aligned container">
-            <div class="seven wide column">
-                <i class="fas fa-globe-americas"></i> <i class="fas fa-suitcase"></i> <i class="fas fa-plane"></i>
-            </div>
-            <div class="ui horizontal inverted small divided link list">
-                <a class="item" href="index.html">Site Map</a>
-                <a class="item" href="contact.html">Contact Us</a>
-                <a class="item" href="#">Terms and Conditions</a>
-                <a class="item" href="#">Privacy Policy</a>
-                <p>Copyright 2019 - All rights reserved &copy;</p>
-            </div>
-        </div>
-    </div>
-    <!-- end footer -->
 
+    {{> footer}}
 </body>
 
 </html>
